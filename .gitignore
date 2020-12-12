@@ -2,4 +2,4 @@ __pycache__/
 .molecule/
 .pytest_cache/
 *-console.log
-env
+env/
