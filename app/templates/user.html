@@ -1,12 +1,41 @@
 {% extends 'base.html' %}
 
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user-page-styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/post-styles.css') }}">
+
+{% endblock links%}
+
+
+
 {% block content %}
-    <h1>User: {{ user.username }}</h1>
+    <table>
+        <tr>
+            <td><img src="{{ user.get_avatar(128) }}" alt="user_avatar"></td>
+            <td><h1>User: {{ user.username }}</h1></td>
+            
+            <td>
+                {% if user.about_me %}
+                    <p>{{ user.about_me }}</p>
+                {% endif %}
+            </td>
+            <td>
+                {%if user.last_seen %}
+                    <p>Last seen on: {{ user.last_seen }}</p>
+                {% endif %}
+            </td>
+
+
+        </tr>
+
+    </table>
     <hr>
+    <h2 class="post-article">My posts: </h2>
+
     {% for post in posts %}
-    <p>
-    {{ post.author.username }} says: <b>{{ post.body }}</b>
-    </p>
+        <div class="post">
+            {% include '_post.html' %}
+        </div>
     {% endfor %}
 
 {% endblock content %}

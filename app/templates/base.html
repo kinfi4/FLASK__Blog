@@ -7,33 +7,46 @@
     {% else %}
         <title>Welcome - Micro blog</title>
     {% endif %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
+    
+
+    {% block links %}
+    {% endblock links%}
+
 </head>
 <body>
-    <div>
-        Microblog:
-        <a href="{{ url_for('main') }}">Home</a>
+    <nav>
+        <h3 class="logo">Kin Blog</h3>
+        <a href="{{ url_for('main') }}" class="navigation-link">Home</a>
+        <a href="{{ url_for('posts') }}" class="navigation-link">Posts</a>
 
         {% if current_user.is_anonymous %}
-        <a href="{{ url_for('login') }}">Sign in</a>
+        <a href="{{ url_for('login') }}" class="navigation-link">Sign in</a>
         {% else %}
-        <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('user_page', username=current_user.username) }}" class="navigation-link">Profile</a>
+        <a href="{{ url_for('logout') }}" class="navigation-link">Logout</a>
         {% endif %}
-    </div>
+    </nav>
+   
     <hr>
 
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=True) %}
         {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li>{{ message }}</li>
+                {% for cat, message in messages %}
+                <p class="{{ cat }}">
+                    {{ message }}
+                </p>
                 {% endfor %}
-            </ul>
         {% endif %}
     {% endwith %}
 
     {% block content %}
-        <h1>Hello It Is Base Template</h1>
+        <h1 class="main-greeting">Welcome!</h1>
+        <p>
+            
+        </p>
+
     {% endblock content %}
 </body>
 </html>

@@ -1,0 +1,53 @@
+p.error, p.info {
+    padding: 10px;
+    font-weight: bold;
+}
+
+p.error{
+    background-color: rgb(216, 69, 69);
+}
+
+p.info{
+    background-color: rgb(49, 182, 49);
+}
+
+
+.post-article{
+    width: 200px;
+    margin-left: 300px;
+}
+
+
+.main-greeting{
+    margin: auto;
+    width: 35%;
+    text-align: center;
+    font-size: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+nav{
+    height: 40px;
+    margin-top: 20px;
+}
+
+.navigation-link{
+    text-decoration: none;
+    font-size: large;
+    margin: 5px;
+    background-color: rgb(231, 226, 226);
+    padding: 10px;
+    color: rgb(112, 108, 108);
+    font-weight: 900;
+    border-radius: 4px;
+    transition: linear 0.4s;
+}
+
+.navigation-link:hover{
+    background-color: rgb(66, 66, 66);
+    color: rgb(202, 202, 202);
+}
+
+.logo{
+    display: inline;
+}
