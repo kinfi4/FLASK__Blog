@@ -1,10 +1,13 @@
 p.error, p.info {
     padding: 10px;
     font-weight: bold;
+    border-radius: 5px;
+    width: 25%;
 }
 
 p.error{
     background-color: rgb(216, 69, 69);
+    
 }
 
 p.info{

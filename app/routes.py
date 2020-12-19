@@ -87,7 +87,22 @@ def user_page(username):
     return render_template('user.html', user=user, posts=posts)
 
 
-@app.route('/edit-profile>', methods=['GET', 'POST'])
+@app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm
+    form = EditProfileForm()
+    if form.validate_on_submit():
+        current_user.username = form.name.data
+        current_user.about_me = form.about_me.data
+        db.session.commit()
+
+        flash('Your changes have been saved.', category='info')
+        return redirect(url_for('edit_profile'))
+    elif request.method == 'GET':
+        form.name.data = current_user.username
+        form.about_me.data = current_user.about_me
+        return render_template('edit-profile.html', form=form)
+    else:
+        flash('Ops, something gone wrong', category='error')
+        return redirect(url_for('main'))
+
