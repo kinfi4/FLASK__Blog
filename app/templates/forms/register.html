@@ -3,6 +3,7 @@
 {% block content %}
 <form action="/register" method="POST">
     {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
     <h1>Registration form</h1>
 
     <p>

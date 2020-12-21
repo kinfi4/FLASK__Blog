@@ -1,0 +1,19 @@
+.create-post-title{
+    width: 30%;
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-block{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-label{
+    float: left;
+    display: block;
+    font-size: 20px;
+}
