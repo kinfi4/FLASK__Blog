@@ -29,10 +29,12 @@
 
     <hr>
 
-    <div class="write-post-block">
-        <span class="what_on_mind_phrase">Whats on your mind?</span>
-        <a href="{{ url_for('create_post') }}" class="create-post-link">Create post</a>
-    </div>
+    {% if user == current_user %}
+        <div class="write-post-block">
+            <span class="what_on_mind_phrase">Whats on your mind?</span>
+            <a href="{{ url_for('create_post') }}" class="create-post-link">Create post</a>
+        </div>
+    {% endif %}
 
     <h2 class="post-article">My posts: </h2>
 

@@ -37,6 +37,5 @@ class EditProfileForm(FlaskForm):
 
 
 class CreatePostForm(FlaskForm):
-    title = StringField(label='Title', validators=[Length(min=2, max=30)])
     body = TextAreaField(label='Post: ', validators=[Length(min=1, max=MAX_POST_LENGTH)])
     submit = SubmitField('POST')

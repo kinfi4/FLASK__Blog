@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
     <tr>
         <td><img src="{{ user.get_avatar(36) }}" alt=""></td>
         <td>{{ post.author.username }}: <br>
@@ -7,9 +7,34 @@
     </tr>
 
     <tr>
-        <td>
-            {{ post.body }}
-            
+        <td colspan="2">
+            {{ post.body }} 
         </td>
     </tr>
-</table>
+</table> -->
+
+<div class="container">
+    <img src="{{ user.get_avatar(36) }}" alt="" class="post-user-icon">
+
+    <h4 class="post-username">
+        {{ post.author.username }}
+    </h4>
+    
+    <span class="post-date">{{ post.post_date }}</span>
+
+    <p class="post-content">
+        {{ post.body }}
+    </p>
+
+    <div class="buttons_container">    
+        <div class="delete_button">
+            <img src="{{ url_for('static', filename='img/delete_icon.png') }}" alt="delete_icon" class="post_icon">
+        </div>
+        <div class="edit_button">
+            <img src="{{ url_for('static', filename='img/edit_icon.png') }}" alt="edit_icon" class="post_icon">
+        </div>
+
+    </div>
+
+
+</div>

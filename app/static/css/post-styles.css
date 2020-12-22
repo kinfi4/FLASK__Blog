@@ -2,6 +2,74 @@
     padding: 10px;
     margin: auto;
     width: 50%;
-    background-color: rgb(143, 197, 143);
+    background-color: rgb(255, 255, 255);
+    border: grey 1px solid;
     border-radius: 4px;
+    margin-top: 30px;
+
+    min-height: 50px;
+    position: relative;
+}
+
+.post-username{
+    float: top;
+    margin-top: 0;
+    margin-left: 5px;
+    display: inline;
+
+}
+.post-user-icon{
+    float: left;
+    margin-right: 10px;
+}
+
+.post-date{
+    float: top;
+    color: rgb(94, 94, 94);
+    margin-left: 5px;
+}
+
+.post-content{
+    margin-top: 2px;
+}
+
+.post_icon{
+    width: 30px;
+    height: 30px;
+}
+
+.edit_button .post_icon{
+    width: 28px;
+    height: 28px;
+}
+
+.delete_button, .edit_button{
+    width: 30px;
+    height: 30px;
+    transition: linear 0.2s;
+    float: right;
+
+    border-radius: 4px;
+    margin: 1px;
+}
+
+.delete_button{
+    background-color: rgb(221, 148, 148);
+}
+.delete_button:hover{
+    background-color: rgb(202, 96, 96);
+}
+
+.edit_button{
+    background-color: rgb(148, 186, 221);
+}
+.edit_button:hover{
+    background-color: rgb(79, 168, 250);
+}
+
+
+.buttons_container{
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }

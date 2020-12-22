@@ -1,10 +1,10 @@
 from hashlib import md5
-from datetime import datetime
+from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import db, login
 
-from app.constants import MAX_POST_LENGTH
+from app.constants import MAX_POST_LENGTH, months
 
 
 @login.user_loader
@@ -36,7 +36,6 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(30))
     body = db.Column(db.String(MAX_POST_LENGTH))
     timespan = db.Column(db.DateTime, index=True, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -45,6 +44,24 @@ class Post(db.Model):
     def author(self):
         return User.query.filter_by(id=self.user_id).first()
 
+    @property
+    def post_date(self):
+        time_past = datetime.now() - self.timespan
+        print(type(time_past))
+        print(time_past.seconds)
+
+        if time_past < timedelta(minutes=1):
+            return f'{time_past.second}s'
+
+        elif time_past < timedelta(hours=1):
+            return f'{time_past.seconds // 60}m'
+
+        elif time_past < timedelta(days=1):
+            return f'{time_past.seconds // 3600}h'
+
+        else:
+            return f'{months.get(self.timespan.month, "undefined")} {self.timespan.day}'
+
     def __repr__(self):
-        return f'Post: {self.body}'
+        return f'{self.author.username}: {self.body}'
 

@@ -9,16 +9,6 @@
 
     <form action="{{ url_for('create_post') }}" method="POST">
         {{ form.hidden_tag() }}
-
-        <p class="form-block">
-            {{ form.title.label(class='form-label') }}
-            {{ form.title }}
-            {% for error in form.title.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </p>
-
-
         <p class="form-block">
             {{ form.body.label(class='form-label') }}
             <br>
