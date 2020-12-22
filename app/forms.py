@@ -32,7 +32,7 @@ class RegistrationForm(FlaskForm):
 
 class EditProfileForm(FlaskForm):
     name = StringField(label='Name: ', validators=[Length(min=2, max=20)])
-    about_me = TextAreaField(label='About me:', validators=[Length(min=0, max=200)])
+    about_me = TextAreaField(label='About me:')
     submit = SubmitField('Save')
 
 

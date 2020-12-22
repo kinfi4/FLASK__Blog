@@ -36,7 +36,7 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(MAX_POST_LENGTH))
+    body = db.Column(db.Text)
     timespan = db.Column(db.DateTime, index=True, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -47,8 +47,6 @@ class Post(db.Model):
     @property
     def post_date(self):
         time_past = datetime.now() - self.timespan
-        print(type(time_past))
-        print(time_past.seconds)
 
         if time_past < timedelta(minutes=1):
             return f'{time_past.second}s'
@@ -59,8 +57,10 @@ class Post(db.Model):
         elif time_past < timedelta(days=1):
             return f'{time_past.seconds // 3600}h'
 
-        else:
+        elif time_past < timedelta(days=365):
             return f'{months.get(self.timespan.month, "undefined")} {self.timespan.day}'
+        else:
+            return f'{self.timespan.year} {months.get(self.timespan.month, "undefined")} {self.timespan.day}'
 
     def __repr__(self):
         return f'{self.author.username}: {self.body}'

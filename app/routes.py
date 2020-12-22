@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, abort
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 
@@ -116,7 +116,6 @@ def create_post():
 
         if form.validate_on_submit():
             post.user_id = current_user.id
-            post.title = form.title.data
             post.body = form.body.data
 
             db.session.add(post)
@@ -133,11 +132,13 @@ def create_post():
         return render_template('forms/create-post.html', **context)
 
 
+@app.route('/delete_post/<id_>', methods=['POST'])
+@login_required
+def delete_post(id_):
+    post = Post.query.filter_by(user_id=current_user.id).filter_by(id=id_).first()
+    if not post:
+        abort(405)
 
-
-
-
-
-
-
-
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('user_page', username=current_user.username))

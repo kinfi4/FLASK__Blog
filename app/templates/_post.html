@@ -26,15 +26,19 @@
         {{ post.body }}
     </p>
 
-    <div class="buttons_container">    
-        <div class="delete_button">
-            <img src="{{ url_for('static', filename='img/delete_icon.png') }}" alt="delete_icon" class="post_icon">
-        </div>
-        <div class="edit_button">
-            <img src="{{ url_for('static', filename='img/edit_icon.png') }}" alt="edit_icon" class="post_icon">
-        </div>
+    {% if post.author == current_user %}
+        <div class="buttons_container">    
+            <div class="">
+                <form action="{{ url_for('delete_post', id_=post.id) }}" method="POST">
+                    <input type="submit" class="delete_button post_icon" value="">
+                </form>
+            </div>
 
-    </div>
+            <div class="edit_button">
+                <img src="{{ url_for('static', filename='img/edit_icon.png') }}" alt="edit_icon" class="post_icon">
+            </div>
+        </div>
+    {% endif %}
 
 
 </div>
