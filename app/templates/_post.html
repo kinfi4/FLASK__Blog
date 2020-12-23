@@ -20,7 +20,7 @@
             </div>
 
             <div class="edit_button">
-                <img src="{{ url_for('static', filename='img/edit_icon.png') }}" alt="edit_icon" class="post_icon">
+                <a href="{{ url_for('edit_post', id_=post.id) }}"><img src="{{ url_for('static', filename='img/edit_icon.png') }}" alt="edit_icon" class="post_icon"></a>
             </div>
         </div>
     {% endif %}

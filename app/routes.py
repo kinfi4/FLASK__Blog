@@ -12,7 +12,7 @@ from app.models import User, Post
 @app.before_request
 def update_last_seen():
     if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
+        current_user.last_seen = datetime.now()
         db.session.commit()
 
 
@@ -129,7 +129,8 @@ def create_post():
     else:
         context = {
             'form': form,
-            'title': 'Create post'
+            'title': 'Create post',
+            'form_endpoint': url_for('create_post')
         }
 
         return render_template('forms/create-post.html', **context)
@@ -145,3 +146,35 @@ def delete_post(id_):
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('user_page', username=current_user.username))
+
+
+@app.route('/edit_post/<id_>', methods=['GET', 'POST'])
+def edit_post(id_):
+    form = CreatePostForm()
+    post = Post.query.filter_by(user_id=current_user.id).filter_by(id=id_).first()
+
+    if not post:
+        abort(405)
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            post.body = form.body.data
+
+            db.session.commit()
+        else:
+            flash('Form was not edited, something wrong!', category='error')
+
+        return redirect(url_for('user_page', username=current_user.username))
+    elif request.method == 'GET':
+        form.body.data = post.body
+
+        context = {
+            'form': form,
+            'title': 'Edit post',
+            'form_endpoint': url_for('edit_post', id_=post.id)
+        }
+
+        return render_template('forms/create-post.html', **context)
+
+
+

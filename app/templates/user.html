@@ -18,9 +18,16 @@
         <p>{{ user.about_me }}</p>
     {% endif %}
 
-    {%if user.last_seen %}
-        <p>Last seen on: {{ user.last_seen }}</p>
-    {% endif %}
+    <p>Last seen on: {{ user.get_last_seen }}</p>
+
+
+    <!-- {% if user.last_seen %}
+        {% if not user.get_last_seen %}
+            <p>Last seen on: {{ user.get_last_seen }}</p>
+        {% else %}
+            <p class="online">Online</p>
+        {% endif %}
+    {% endif %} -->
 
 
     {% if user == current_user %}

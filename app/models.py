@@ -18,7 +18,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     about_me = db.Column(db.String(500))
-    last_seen = db.Column(db.DateTime, default=datetime.utcnow())
+    last_seen = db.Column(db.DateTime, default=datetime.now())
 
     def set_password_hash(self, password):
         self.password_hash = generate_password_hash(password)
@@ -29,6 +29,24 @@ class User(UserMixin, db.Model):
     def get_avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return f'https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}'
+
+    @property
+    def get_last_seen(self):
+        time_past = datetime.now() - self.last_seen
+
+        if time_past < timedelta(minutes=1):
+            return f'{time_past.seconds}s ago'
+
+        elif time_past < timedelta(hours=1):
+            return f'{time_past.seconds // 60}m ago'
+
+        elif time_past < timedelta(days=1):
+            return f'{time_past.seconds // 3600}h ago'
+
+        elif time_past < timedelta(days=365):
+            return f' on {months.get(self.timespan.month, "undefined")} {self.timespan.day}'
+        else:
+            return f' on {self.timespan.year} {months.get(self.timespan.month, "undefined")} {self.timespan.day}'
 
     def __repr__(self):
         return f'User: {self.username}'

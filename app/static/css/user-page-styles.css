@@ -28,3 +28,9 @@
     text-align: center;
     margin-top: 40px;
 }
+
+.online{
+    color: green;
+    font-size: large;
+    text-decoration: underline;
+}
