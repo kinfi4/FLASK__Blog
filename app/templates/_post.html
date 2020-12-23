@@ -1,18 +1,3 @@
-<!-- <table>
-    <tr>
-        <td><img src="{{ user.get_avatar(36) }}" alt=""></td>
-        <td>{{ post.author.username }}: <br>
-            <strong style="font-size: 22px;">{{ post.title }}</strong><br>
-        </td>
-    </tr>
-
-    <tr>
-        <td colspan="2">
-            {{ post.body }} 
-        </td>
-    </tr>
-</table> -->
-
 <div class="container">
     <img src="{{ user.get_avatar(36) }}" alt="" class="post-user-icon">
 
@@ -39,6 +24,4 @@
             </div>
         </div>
     {% endif %}
-
-
 </div>

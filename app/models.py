@@ -36,7 +36,7 @@ class User(UserMixin, db.Model):
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.Text)
+    body = db.Column(db.String(length=10e4))
     timespan = db.Column(db.DateTime, index=True, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -49,7 +49,7 @@ class Post(db.Model):
         time_past = datetime.now() - self.timespan
 
         if time_past < timedelta(minutes=1):
-            return f'{time_past.second}s'
+            return f'{time_past.seconds}s'
 
         elif time_past < timedelta(hours=1):
             return f'{time_past.seconds // 60}m'
