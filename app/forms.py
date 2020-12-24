@@ -35,6 +35,16 @@ class EditProfileForm(FlaskForm):
     about_me = TextAreaField(label='About me:', validators=[Length(min=0, max=200)])
     submit = SubmitField('Save')
 
+    def __init__(self, original_name, *args, **kwargs):
+        super(EditProfileForm, self).__init__(*args, **kwargs)
+        self.original_name = original_name
+
+    def validate_name(self, username):
+        if username.data != self.original_name:
+            user = User.query.filter_by(username=self.name.data).first()
+            if user:
+                raise ValidationError('Please use a different username')
+
 
 class CreatePostForm(FlaskForm):
     body = TextAreaField(label='Post: ')

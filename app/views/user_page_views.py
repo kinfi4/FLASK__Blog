@@ -1,5 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_required
+from wtforms import ValidationError
 
 from app import app, db
 from app.forms import EditProfileForm
@@ -18,7 +19,7 @@ def user_page(username):
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm()
+    form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
         current_user.username = form.name.data
         current_user.about_me = form.about_me.data
@@ -26,10 +27,17 @@ def edit_profile():
 
         flash('Your changes have been saved.', category='info')
         return redirect(url_for('edit_profile'))
+    # elif request.method == 'POST':
+    #     try:
+    #         form.validate_name(form.name)
+    #     except ValidationError as error:
+    #         pass
+    #
+    #     return render_template('forms/edit-profile.html', form=form)
     elif request.method == 'GET':
         form.name.data = current_user.username
         form.about_me.data = current_user.about_me
         return render_template('forms/edit-profile.html', form=form)
     else:
-        flash('Ops, something gone wrong', category='error')
-        return redirect(url_for('main'))
+        flash('This username is engaged', category='error')
+        return redirect(url_for('edit_profile'))
