@@ -27,13 +27,6 @@ def edit_profile():
 
         flash('Your changes have been saved.', category='info')
         return redirect(url_for('edit_profile'))
-    # elif request.method == 'POST':
-    #     try:
-    #         form.validate_name(form.name)
-    #     except ValidationError as error:
-    #         pass
-    #
-    #     return render_template('forms/edit-profile.html', form=form)
     elif request.method == 'GET':
         form.name.data = current_user.username
         form.about_me.data = current_user.about_me
