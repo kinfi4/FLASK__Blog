@@ -72,3 +72,10 @@
     top: 0px;
     right: 0px;
 }
+
+.post-user-title{
+    text-decoration: none;
+    font-size: large;
+    font-weight: 900;
+    color: black;
+}

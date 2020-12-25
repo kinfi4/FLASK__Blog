@@ -11,9 +11,17 @@ from app.models import User, Post
 @login_required
 def user_page(username):
     user = User.query.filter_by(username=username).first_or_404()
-    posts = Post.query.filter_by(user_id=user.id).all()
+    page = request.args.get('page', 1, type=int)
 
-    return render_template('user.html', user=user, posts=posts)
+    posts_for_page = Post.query.filter_by(user_id=user.id).order_by(Post.timespan.desc()).paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+
+    next_page = url_for('user_page', username=username,
+                        page=posts_for_page.next_num) if posts_for_page.has_next else None
+    prev_page = url_for('user_page', username=username,
+                        page=posts_for_page.prev_num) if posts_for_page.has_prev else None
+
+    return render_template('user.html', user=user, posts=posts_for_page.items, next_page=next_page, prev_page=prev_page)
 
 
 @app.route('/edit_profile', methods=['GET', 'POST'])

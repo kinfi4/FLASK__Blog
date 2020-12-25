@@ -1,8 +1,12 @@
-<div class="container">
-    <img src="{{ user.get_avatar(36) }}" alt="" class="post-user-icon">
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/post-styles.css') }}">
+{% endblock links%}
+
+<div class="post">
+    <img src="{{ post.author.get_avatar(36) }}" alt="" class="post-user-icon">
 
     <h4 class="post-username">
-        {{ post.author.username }}
+        <a href="{{ url_for('user_page', username=post.author.username) }}" class="post-user-title">{{ post.author.username }}</a>
     </h4>
     
     <span class="post-date">{{ post.post_date }}</span>
