@@ -19,7 +19,7 @@ def follow(username):
 
     current_user.follow(user)
     db.session.commit()
-    flash(f'You are following {username}')
+    flash(f'You are following {username}', category='info')
     return redirect(url_for('user_page', username=username))
 
 
@@ -37,6 +37,6 @@ def unfollow(username):
 
     current_user.unfollow(user)
     db.session.commit()
-    flash(f'You unfollow {username}')
+    flash(f'You unfollow {username}', category='info')
     return redirect(url_for('user_page', username=username))
 

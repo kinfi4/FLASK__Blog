@@ -34,3 +34,9 @@
     font-size: large;
     text-decoration: underline;
 }
+
+.follow-link{
+    text-decoration: none;
+    font-size: large;
+    padding: 4px;
+}
