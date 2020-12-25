@@ -55,10 +55,11 @@ class User(UserMixin, db.Model):
 
     def followed_posts(self):
         followed = Post.query.join(
-            'followers', (Post.user_id == followers.c.followed_id)).filter(
+            followers, (Post.user_id == followers.c.followed_id)).filter(
             followers.c.follower_id == self.id)
         own = Post.query.filter_by(user_id=self.id)
-        return followed.union(own).order_by(Post.timespan.desc())
+
+        return followed.union(own).order_by(Post.timespan)
 
 
     @property
