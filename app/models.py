@@ -61,7 +61,6 @@ class User(UserMixin, db.Model):
 
         return followed.union(own).order_by(Post.timespan)
 
-
     @property
     def get_last_seen(self):
         time_past = datetime.now() - self.last_seen
