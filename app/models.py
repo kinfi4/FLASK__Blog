@@ -5,6 +5,7 @@ from flask_login import UserMixin
 from app import db, login
 
 from app.constants import months
+from app.utils.get_passed_time import get_time_passed
 
 
 @login.user_loader
@@ -63,21 +64,7 @@ class User(UserMixin, db.Model):
 
     @property
     def get_last_seen(self):
-        time_past = datetime.now() - self.last_seen
-
-        if time_past < timedelta(minutes=1):
-            return f'{time_past.seconds}s ago'
-
-        elif time_past < timedelta(hours=1):
-            return f'{time_past.seconds // 60}m ago'
-
-        elif time_past < timedelta(days=1):
-            return f'{time_past.seconds // 3600}h ago'
-
-        elif time_past < timedelta(days=365):
-            return f' on {months.get(self.timespan.month, "undefined")} {self.timespan.day}'
-        else:
-            return f' on {self.timespan.year} {months.get(self.timespan.month, "undefined")} {self.timespan.day}'
+        return get_time_passed(self.last_seen)
 
     def __repr__(self):
         return f'User: {self.username}'
@@ -95,21 +82,7 @@ class Post(db.Model):
 
     @property
     def post_date(self):
-        time_past = datetime.now() - self.timespan
-
-        if time_past < timedelta(minutes=1):
-            return f'{time_past.seconds}s'
-
-        elif time_past < timedelta(hours=1):
-            return f'{time_past.seconds // 60}m'
-
-        elif time_past < timedelta(days=1):
-            return f'{time_past.seconds // 3600}h'
-
-        elif time_past < timedelta(days=365):
-            return f'{months.get(self.timespan.month, "undefined")} {self.timespan.day}'
-        else:
-            return f'{self.timespan.year} {months.get(self.timespan.month, "undefined")} {self.timespan.day}'
+        return get_time_passed(self.timespan)
 
     def __repr__(self):
         return f'{self.author.username}: {self.body}'

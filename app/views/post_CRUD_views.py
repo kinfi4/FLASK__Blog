@@ -18,8 +18,6 @@ def create_post():
             post.user_id = current_user.id
             post.body = form.body.data
 
-            print(post)
-
             db.session.add(post)
             db.session.commit()
 
