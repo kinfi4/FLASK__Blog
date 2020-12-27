@@ -2,13 +2,18 @@
     padding: 10px;
     margin: auto;
     width: 50%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(253, 255, 255);
     border: grey 1px solid;
     border-radius: 4px;
     margin-top: 30px;
 
     min-height: 50px;
     position: relative;
+}
+
+.post:hover{
+    background-color: rgb(228, 242, 255);
+
 }
 
 .post-username{
@@ -70,7 +75,7 @@
 .buttons_container{
     position: absolute;
     top: 0px;
-    right: 0px;
+    float: right;
 }
 
 .post-user-title{

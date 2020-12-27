@@ -3,29 +3,43 @@
 {% endblock links%}
 
 <div class="post">
-    <img src="{{ post.author.get_avatar(36) }}" alt="" class="post-user-icon">
-
-    <h4 class="post-username">
-        <a href="{{ url_for('user_page', username=post.author.username) }}" class="post-user-title">{{ post.author.username }}</a>
-    </h4>
-    
-    <span class="post-date">{{ post.post_date }}</span>
-
-    <p class="post-content">
-        {{ post.body }}
-    </p>
-
-    {% if post.author == current_user %}
-        <div class="buttons_container">    
-            <div class="">
-                <form action="{{ url_for('delete_post', id_=post.id) }}" method="POST">
-                    <input type="submit" class="delete_button post_icon" value="">
-                </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{{ post.author.get_avatar(36) }}" alt="" class="post-user-icon">
+            </div>
+            <div class="col-md-3">
+                <h4 class="post-username">
+                    <a href="{{ url_for('user_page', username=post.author.username) }}" class="post-user-title">{{ post.author.username }}</a>
+                </h4>
+                
+                <span class="post-date">{{ post.post_date }}</span>    
             </div>
 
-            <div class="edit_button">
-                <a href="{{ url_for('edit_post', id_=post.id) }}"><img src="{{ url_for('static', filename='img/edit_icon.png') }}" alt="edit_icon" class="post_icon"></a>
+            <div class="buttons_container">
+                {% if post.author == current_user %}
+                        <div class="">
+                            <form action="{{ url_for('delete_post', id_=post.id) }}" method="POST">
+                                <input type="submit" class="delete_button post_icon" value="">
+                            </form>
+                        </div>
+            
+                        <div class="edit_button">
+                            <a href="{{ url_for('edit_post', id_=post.id) }}"><img src="{{ url_for('static', filename='img/edit_icon.png') }}" alt="edit_icon" class="post_icon"></a>
+                        </div>
+                {% endif %}
+
+            </div>
+        
+        </div>
+    
+        <div class="row">
+            <div class="col-md-1"></div>
+    
+            <div class="col-md-11">
+                {{ post.body }}
             </div>
         </div>
-    {% endif %}
+    </div>
+    
 </div>
