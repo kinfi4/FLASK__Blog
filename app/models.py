@@ -20,11 +20,16 @@ followers = db.Table('followers',
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    full_name = db.Column(db.String(128))
+    image_file = db.Column(db.String(30), default='default.jpg')
+
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     about_me = db.Column(db.String(500))
     last_seen = db.Column(db.DateTime, default=datetime.now())
+
+    posts = db.relationship('Post', backref='author', lazy=True)
 
     followed = db.relationship(
         'User', secondary=followers,
@@ -76,9 +81,9 @@ class Post(db.Model):
     timespan = db.Column(db.DateTime, index=True, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    @property
-    def author(self):
-        return User.query.filter_by(id=self.user_id).first()
+    # @property
+    # def author(self):
+    #     return User.query.filter_by(id=self.user_id).first()
 
     @property
     def post_date(self):

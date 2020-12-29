@@ -38,9 +38,8 @@ nav{
     margin-top: 20px;
 }
 
-.navigation-link{
-    vertical-align: middle;
-    padding: 0;
+.nav-link{
+    font-size: larger;    
 }
 
 

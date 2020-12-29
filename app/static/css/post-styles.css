@@ -54,6 +54,7 @@
     margin: 1px;
     cursor: pointer;
 
+    flex: inherit;
     display: block;
 }
 
@@ -65,8 +66,6 @@
     background-color: rgb(202, 96, 96);
 }
 
-.edit_button{
-}
 .edit_button:hover{
     background-color: rgb(79, 168, 250);
 }
@@ -74,8 +73,7 @@
 
 .buttons_container{
     position: absolute;
-    top: 0px;
-    float: right;
+    top: 2px;
 }
 
 .post-user-title{
