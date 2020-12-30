@@ -27,10 +27,13 @@ def user_page(username):
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm(current_user.username)
+    form = EditProfileForm(current_user.username, current_user.email)
     if form.validate_on_submit():
         current_user.username = form.name.data
         current_user.about_me = form.about_me.data
+        current_user.email = form.email.data
+        current_user.full_name = form.full_name.data
+
         db.session.commit()
 
         flash('Your changes have been saved.', category='info')
@@ -38,6 +41,8 @@ def edit_profile():
     elif request.method == 'GET':
         form.name.data = current_user.username
         form.about_me.data = current_user.about_me
+        form.full_name.data = current_user.full_name
+        form.email.data = current_user.email
         return render_template('forms/edit-profile.html', form=form)
     else:
         flash('This username is engaged', category='error')

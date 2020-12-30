@@ -3,7 +3,6 @@ from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Le
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextField, TextAreaField
 
 from app.models import User
-from app.constants import MAX_POST_LENGTH
 
 
 class LoginForm(FlaskForm):
@@ -15,8 +14,10 @@ class LoginForm(FlaskForm):
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    full_name = StringField('Full name', validators=[DataRequired(), Length(min=2, max=40)])
+    username = StringField('Username', validators=[DataRequired(), Length(min=4, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
+
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Confirm password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
@@ -31,19 +32,29 @@ class RegistrationForm(FlaskForm):
 
 
 class EditProfileForm(FlaskForm):
+    full_name = StringField('Full name', validators=[DataRequired(), Length(min=2, max=40)])
     name = StringField(label='Name: ', validators=[Length(min=2, max=20)])
+    email = StringField(label='Email: ', validators=[Email()])
+
     about_me = TextAreaField(label='About me:', validators=[Length(min=0, max=200)])
     submit = SubmitField('Save')
 
-    def __init__(self, original_name, *args, **kwargs):
+    def __init__(self, original_name, original_email, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
         self.original_name = original_name
+        self.original_email = original_email
 
     def validate_name(self, username):
         if username.data != self.original_name:
             user = User.query.filter_by(username=self.name.data).first()
             if user:
                 raise ValidationError('Please use a different username')
+
+    def validate_email(self, email):
+        if email.data != self.original_email:
+            user = User.query.filter_by(username=self.email.data).first()
+            if user:
+                raise ValidationError('Please use a different email')
 
 
 class CreatePostForm(FlaskForm):

@@ -1,10 +1,11 @@
 from hashlib import md5
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import url_for
 from flask_login import UserMixin
 from app import db, login
 
-from app.constants import months
+from config import MEDIA_FOLDER
 from app.utils.get_passed_time import get_time_passed
 
 
@@ -44,8 +45,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def get_avatar(self, size):
-        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-        return f'https://www.gravatar.com/avatar/{digest}?d=identicon&s={size}'
+        return url_for('static', filename='media/users_avatars/' + self.image_file)
 
     def follow(self, user):
         if not self.is_following(user):

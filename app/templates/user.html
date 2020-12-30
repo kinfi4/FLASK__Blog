@@ -12,7 +12,7 @@
 
     <img src="{{ user.get_avatar(128) }}" alt="user_avatar">
 
-    <h1>User: {{ user.username }}</h1>
+    <h1>{{ user.full_name }} @{{ user.username }}</h1>
 
     {% if user.about_me %}
         <p>{{ user.about_me }}</p>
