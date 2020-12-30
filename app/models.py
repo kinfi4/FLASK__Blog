@@ -1,4 +1,4 @@
-from hashlib import md5
+from PIL import Image
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import url_for

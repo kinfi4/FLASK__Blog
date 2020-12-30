@@ -22,12 +22,6 @@
     font-size: 30px;
 }
 
-.write-post-block{
-    width: 30%;
-    margin: auto;
-    text-align: center;
-    margin-top: 40px;
-}
 
 .online{
     color: green;
@@ -37,6 +31,27 @@
 
 .follow-link{
     text-decoration: none;
-    font-size: large;
+    font-size: medium;
     padding: 4px;
 }
+.username{
+    color: rgb(100, 100, 100);
+    font-size: 25px;
+}
+
+.avatar{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.edit-button{
+    text-decoration: none;
+    color: rgb(37, 37, 37);
+
+}
+/* 
+.user-info{
+    width: 60%;
+    background-color: rgb(134, 101, 101);
+} */

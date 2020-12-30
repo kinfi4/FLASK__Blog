@@ -19,13 +19,14 @@
 .post-username{
     float: top;
     margin-top: 0;
-    margin-left: 5px;
     display: inline;
-
 }
 .post-user-icon{
     float: left;
-    margin-right: 10px;
+    margin-right: 0px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 .post-date{
@@ -76,9 +77,20 @@
     top: 2px;
 }
 
-.post-user-title{
+.post-user-username{
     text-decoration: none;
-    font-size: large;
-    font-weight: 900;
-    color: black;
+    font-size: 18px;
+    color: rgb(77, 77, 77);
+}
+
+
+.post-user-full_name{
+    display: inline;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+}
+
+.row .col-md-10 .row{
+    --bs-gutter-x: 0rem;
 }
