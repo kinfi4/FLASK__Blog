@@ -1,0 +1,15 @@
+.filter-posts-title{
+    text-transform: capitalize;
+    text-align: center;
+
+    border-bottom: 4px solid skyblue;
+}
+
+.filter-posts-title.active{
+    border-bottom: 4px solid rgb(27, 173, 231);
+}
+
+.filter-posts-link{
+    text-decoration: none;
+    color: black;
+}

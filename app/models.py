@@ -59,6 +59,7 @@ class User(UserMixin, db.Model):
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
 
+    @property
     def followed_posts(self):
         followed = Post.query.join(
             followers, (Post.user_id == followers.c.followed_id)).filter(
@@ -70,6 +71,10 @@ class User(UserMixin, db.Model):
     @property
     def get_last_seen(self):
         return get_time_passed(self.last_seen)
+
+    @property
+    def posts_number(self):
+        return len(self.posts)
 
     def __repr__(self):
         return f'User: {self.username}'

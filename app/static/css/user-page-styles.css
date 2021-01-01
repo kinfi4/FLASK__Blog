@@ -50,8 +50,27 @@
     color: rgb(37, 37, 37);
 
 }
-/* 
-.user-info{
-    width: 60%;
-    background-color: rgb(134, 101, 101);
-} */
+
+.follow-block{
+    width: 100%;
+    margin: auto;
+    margin-top: 40px;
+    width: auto;
+
+}
+
+.follow-count{
+    font-size: larger;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.block-user-info{
+    margin-top: 80px;
+    margin-right: 100px;
+    background-color: rgb(194, 145, 145);
+}
+.about-me{
+    white-space: pre-wrap;
+}

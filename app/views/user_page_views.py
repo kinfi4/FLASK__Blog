@@ -45,5 +45,5 @@ def edit_profile():
         form.email.data = current_user.email
         return render_template('forms/edit-profile.html', form=form)
     else:
-        flash('This username is engaged', category='error')
+        flash(form, category='error')
         return redirect(url_for('edit_profile'))

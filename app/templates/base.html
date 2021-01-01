@@ -58,9 +58,35 @@
         {% endif %}
     {% endwith %}
 
-    {% block content %}
-        <h1 class="main-greeting">Welcome!</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Left span  -->
+                <div class="col-md-2">
 
-    {% endblock content %}
+                </div>
+
+                <!-- Main part -->
+                <div class="col-md-8">
+                    {% block content %}
+                        <h1 class="main-greeting">Welcome!</h1>
+                    {% endblock content %}
+                </div>
+
+
+                <!-- Right span  -->
+                <div class="col-md-2">
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
 </body>
 </html>

@@ -7,13 +7,13 @@ def get_time_passed(time_passed):
     time_past = datetime.now() - time_passed
 
     if time_past < timedelta(minutes=1):
-        return f'{time_past.seconds}s ago'
+        return f'{time_past.seconds}s'
 
     elif time_past < timedelta(hours=1):
-        return f'{time_past.seconds // 60}m ago'
+        return f'{time_past.seconds // 60}m'
 
     elif time_past < timedelta(days=1):
-        return f'{time_past.seconds // 3600}h ago'
+        return f'{time_past.seconds // 3600}h'
 
     elif time_past < timedelta(days=365):
         return f' {months.get(time_passed.month, "undefined")} {time_passed.day}'

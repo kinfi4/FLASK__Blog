@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
 
+{% block links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/posts-page-styles.css') }}">
+{% endblock links %}
+
 {% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{{ url_for('posts', sort_by='world') }}" class="filter-posts-link"><h4 class="filter-posts-title active">world</h4></a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ url_for('posts', sort_by='country') }}" class="filter-posts-link"><h4 class="filter-posts-title">ukraine</h4></a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ url_for('posts', sort_by='following') }}" class="filter-posts-link"><h4 class="filter-posts-title">following</h4></a>
+            </div>
+        </div>
+    </div>
+
+
     {% for post in posts %}
             {% include '_post.html' %}
     {% endfor %}

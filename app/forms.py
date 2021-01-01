@@ -36,7 +36,7 @@ class EditProfileForm(FlaskForm):
     name = StringField(label='Name: ', validators=[Length(min=2, max=20)])
     email = StringField(label='Email: ', validators=[Email()])
 
-    about_me = TextAreaField(label='About me:', validators=[Length(min=0, max=200)])
+    about_me = TextAreaField(label='About me:', validators=[Length(min=0, max=120   )])
     submit = SubmitField('Save')
 
     def __init__(self, original_name, original_email, *args, **kwargs):
