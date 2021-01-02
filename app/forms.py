@@ -60,3 +60,15 @@ class EditProfileForm(FlaskForm):
 class CreatePostForm(FlaskForm):
     body = TextAreaField(label='Post: ')
     submit = SubmitField('POST')
+
+
+class EmailForResetPasswordForm(FlaskForm):
+    email = StringField(label='Enter your account email: ', validators=[DataRequired(), Email()])
+    submit = SubmitField('Send')
+
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired()])
+    password2 = PasswordField(
+        'Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Reset')

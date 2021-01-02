@@ -30,6 +30,11 @@
             {{ form.submit() }}
         </p>
 
+        <p>
+            Forger your password?
+            <a href="{{url_for('reset_password_request')}}">Reset password</a>
+        </p>
+
     </form>
 
     <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>

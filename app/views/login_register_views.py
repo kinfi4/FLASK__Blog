@@ -31,7 +31,7 @@ def login():
 
         return redirect(next_page)
 
-    return render_template('forms/login.html', form=form, title='Sing in')
+    return render_template('forms/login_forms/login.html', form=form, title='Sing in')
 
 
 @app.route('/log-out')
@@ -56,7 +56,7 @@ def register():
         flash('Congratulations, you successfully registered on MicroBlog!!', category='info')
         return redirect(url_for('posts'))
 
-    return render_template('forms/register.html', title='Registration', form=form)
+    return render_template('forms/login_forms/register.html', title='Registration', form=form)
 
 
 

@@ -1,9 +1,10 @@
-from PIL import Image
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
+
+import jwt
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import url_for
 from flask_login import UserMixin
-from app import db, login
+from app import db, login, app
 
 from config import MEDIA_FOLDER
 from app.utils.get_passed_time import get_time_passed
@@ -75,6 +76,21 @@ class User(UserMixin, db.Model):
     @property
     def posts_number(self):
         return len(self.posts)
+
+    def get_reset_password_token(self, token_time_available=600):
+        return jwt.encode({
+            'reset_password': self.id, 'exp': datetime.now() + timedelta(seconds=token_time_available)},
+            app.config['SECRET_KEY'],
+            algorithm='HS256').encode('utf-8')
+
+    @staticmethod
+    def verify_reset_password_token(token):
+        try:
+            id = jwt.decode(token, app.config['SECRET_KEY'],
+                            algorithms=['HS256'])['reset_password']
+        except:
+            return
+        return User.query.get(id)
 
     def __repr__(self):
         return f'User: {self.username}'
