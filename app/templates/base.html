@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     {% if title %}
-        <title>{{ title }} - Micro blog</title>
+        <title>{{ title }} - KinfBook</title>
     {% else %}
-        <title>Welcome - Micro blog</title>
+        <title>KinfBook</title>
     {% endif %}
 
     
@@ -23,7 +23,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">KinfiBook</a>
+            <a class="navbar-brand" href="#">KinfBook</a>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -48,7 +48,6 @@
             </div>
         </div>
     </nav>
-   <hr>
     {% with messages = get_flashed_messages(with_categories=True) %}
         {% if messages %}
                 {% for cat, message in messages %}
@@ -62,7 +61,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- Left span  -->
-                <div class="col-md-3">
+                <div class="col-md-3 left-block">
 
                 </div>
 
@@ -75,13 +74,15 @@
 
 
                 <!-- Right span  -->
-                <div class="col-md-3">
-                    <div class="sing-up-block">
-                        <div class="row">
-                            <p class="sing-up-caption">New on KinfBook?</p>
-                            <a href="{{ url_for('register') }} " class="btn btn-primary sing-up-button">Sing up</a>
+                <div class="col-md-3 right-block">
+                    {% if not current_user.is_authenticated %}
+                        <div class="sing-up-block">
+                            <div class="row">
+                                <p class="sing-up-caption">New on KinfBook?</p>
+                                <a href="{{ url_for('register') }} " class="btn btn-primary sing-up-button">Sing up</a>
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
 
             </div>

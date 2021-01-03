@@ -24,15 +24,6 @@ p.info{
     margin-left: 300px;
 }
 
-
-.main-greeting{
-    margin: auto;
-    width: 35%;
-    text-align: center;
-    font-size: 100px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
 nav{
     height: 40px;
     margin-top: 20px;
@@ -47,3 +38,10 @@ nav{
     display: inline;
 }
 
+.left-block{
+    border-right: 0.5px solid rgb(165, 227, 230);
+}
+
+.right-block{
+    border-left: 0.5px solid rgb(165, 227, 230);
+}
