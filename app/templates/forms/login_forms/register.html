@@ -1,45 +1,87 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
 
-{% block content %}
-<form action="/register" method="POST">
-    {{ form.hidden_tag() }}
-    {{ form.csrf_token }}
-    <h1>Registration form</h1>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/forms_styles/login-register-form-styles.css') }}">
 
-    <p>
-        {{ form.username.label }} <br>
-        {{ form.username() }}
-        {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
+    </head>
 
-    <p>
-        {{ form.email.label }} <br>
-        {{ form.email() }}
-        {% for error in form.email.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
+    <body>
+        <div class="container-fluid">
+            <div class="row full_screen">
+                <div class="col-md-6 left-img" style="background-image: url({{ url_for('static', filename='img/sing_up_picture.jpg') }});">
+                </div>
+    
+                <div class="col-md-6">
+                    <div class="form-block">
+                        <div class="row">
+                            <h1>Sing up</h1>
+                        </div>
+                        
+                        <div class="form-content-block">
+                            <div class="row">
+                                <form action="/register" method="POST">
+                                    {{ form.hidden_tag() }}
+                                    {{ form.csrf_token }}
+                                    
+                                    <p>
+                                        {{ form.full_name.label(class='form-field-caption') }} <br>
+                                        {{ form.full_name(class='form-text-field') }}
+                                        {% for error in form.full_name.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
+                                
+                                    <p>
+                                        {{ form.username.label(class='form-field-caption') }} <br>
+                                        {{ form.username(class='form-text-field') }}
+                                        {% for error in form.username.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
+                                
+                                    <p>
+                                        {{ form.email.label(class='form-field-caption') }} <br>
+                                        {{ form.email(class='form-text-field') }}
+                                        {% for error in form.email.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
+                                
+                                    <p>
+                                        {{ form.password.label(class='form-field-caption') }} <br>
+                                        {{ form.password(class='form-text-field') }}
+                                        {% for error in form.password.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
+                                
+                                    <p>
+                                        {{ form.password2.label(class='form-field-caption') }} <br>
+                                        {{ form.password2(class='form-text-field') }}
+                                        {% for error in form.password2.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </p>
+                                
+                                    <p>
+                                        {{ form.submit(class='btn btn-success') }} <a href="{{url_for('login')}}" class="back-link">Sing in  <span style="font-size: 35px;">&rarr;</span></a>
+                                    </p>
+                                </form>
+                            </div>
+    
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
 
-    <p>
-        {{ form.password.label }} <br>
-        {{ form.password() }}
-        {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-
-    <p>
-        {{ form.password2.label }} <br>
-        {{ form.password2() }}
-        {% for error in form.password2.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-
-    <p>
-        {{ form.submit() }}
-    </p>
-</form>
-{% endblock content %}
+    </body>
+</html>
