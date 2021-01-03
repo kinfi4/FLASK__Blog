@@ -1,41 +1,98 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
 
-{% block content %}
-    <h1>Sing in</h1>
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/forms_styles/login-register-form-styles.css') }}">
 
-      <form action="/login" method="POST" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.login.label }}<br>
-            {{ form.login(size=32) }}
-            {% for error in form.login.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </p>
+    </head>
 
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
+    <body>
 
-            {% for error in form.password.errors %}
-                <span style="color: red;">{{ error }}</span>
-            {% endfor %}
-        </p>
+        <div class="container-fluid">
+            <div class="row full_screen">
+                <div class="col-md-6 left-img" style="background-image: url({{ url_for('static', filename='img/login_img.jpg') }});">
+                </div>
+    
+                <div class="col-md-6">
 
-        <p>
-            {{ form.remember_me() }} {{ form.remember_me.label }}
-        </p>
+                    <div class="error-block">
+                        {% with messages = get_flashed_messages(with_categories=True) %}
+                            {% if messages %}
+                                    {% for cat, message in messages %}
+                                    <p class="{{ cat }}">
+                                        {{ message }}
+                                    </p>
+                                    {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div>
 
-        <p>
-            {{ form.submit() }}
-        </p>
+                    <div class="form-block">
+                        <div class="row">
+                            <h1>Sing up</h1>
+                        </div>
+                        
+                        <div class="form-content-block">
+                            <div class="row">                       
 
-        <p>
-            Forger your password?
-            <a href="{{url_for('reset_password_request')}}">Reset password</a>
-        </p>
+                                <form action="/login" method="POST">
+                                    {{ form.hidden_tag() }}
+                                    {{ form.csrf_token }}
 
-    </form>
+                                    {{ form.hidden_tag() }}
+                                    <p>
+                                        {{ form.login.label(class='form-field-caption') }}<br>
+                                        {{ form.login(class='form-text-field') }}
+                                        {% for error in form.login.errors %}
+                                            <span style="color: red;">{{ error }}</span>
+                                        {% endfor %}
+                                    </p>
+                            
+                                    <p>
+                                        {{ form.password.label(class='form-field-caption') }}<br>
+                                        {{ form.password(class='form-text-field') }}
+                                        {% for error in form.password.errors %}
+                                            <span style="color: red;">{{ error }}</span>
+                                        {% endfor %}
+                                    </p>
+                            
+                                    <p>
+                                        {{ form.remember_me() }} {{ form.remember_me.label(class='form-field-caption') }}
+                                    </p>
 
-    <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
-{% endblock content %}
+                            
+                            
+                                    <p>
+                                        {{ form.submit(class='btn btn-success') }}
+                                    </p>
+
+                                    <div class="question-block">
+                                        <p>
+                                            <span class="caption">Forger your password?</span>
+                                            <a href="{{url_for('reset_password_request')}}" class="link">Reset password</a>
+                                        </p>
+    
+                                        <p>
+                                            <span class="caption">New on KinfBook?</span>
+                                            <a href="{{ url_for('register') }} " class="link">Click to Register!</a>
+                                        </p>
+    
+                                    </div>
+                                </form>
+                            </div>
+    
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+
+    </body>
+</html>

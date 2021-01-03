@@ -1,5 +1,9 @@
+body{
+    background-color: rgb(251, 240, 240);
+}
+
 .form-block{
-    margin-top: 100px;
+    margin-top: 80px;
     margin-left: 100px;
 }
 
@@ -17,14 +21,15 @@
 
 .form-text-field{
     border: none;
-    border-bottom: 2px solid rgb(63, 63, 63);
+    border-bottom: 2px solid rgb(63, 63, 63); 
     font-size: 20px;
+    background-color: rgb(251, 240, 240);
 }
 
 .form-text-field:focus{
     outline: none;
     border-bottom: 2px solid rgb(189, 90, 90);
-
+    background-color: rgb(251, 240, 240);
 }
 
 .form-field-caption{
@@ -33,7 +38,7 @@
     font-size: 20px;
 }
 .form-content-block{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .back-link{
@@ -41,3 +46,46 @@
     color: rgb(122, 122, 122);
     margin-left: 50px;
 }
+
+.link{
+    text-decoration: none;
+    color: grey;
+    font-size: 20px;
+}
+
+.caption{
+    color: black;
+    font-size: 20px;
+}
+
+.question-block{
+    margin-top: 40px;
+}
+
+.error-block{
+    width: 60%;
+    margin: auto;
+    margin-top: 50px;
+
+}
+
+.error-block .info{
+    width: 100%;
+    margin: auto;
+
+}
+
+
+
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px rgb(251, 240, 240) inset;
+    -webkit-text-fill-color: #333;
+    font-size: 20px;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px rgb(251, 240, 240) inset;
+    -webkit-text-fill-color: #333;
+    font-size: 20px;
+}
+
