@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main-page-styles.css')}}">
 
     {% block links %}
     {% endblock links%}
@@ -61,12 +62,12 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- Left span  -->
-                <div class="col-md-2">
+                <div class="col-md-3">
 
                 </div>
 
                 <!-- Main part -->
-                <div class="col-md-8">
+                <div class="col-md-6">
                     {% block content %}
                         <h1 class="main-greeting">Welcome!</h1>
                     {% endblock content %}
@@ -74,8 +75,13 @@
 
 
                 <!-- Right span  -->
-                <div class="col-md-2">
-
+                <div class="col-md-3">
+                    <div class="sing-up-block">
+                        <div class="row">
+                            <p class="sing-up-caption">New on KinfBook?</p>
+                            <a href="{{ url_for('register') }} " class="btn btn-primary sing-up-button">Sing up</a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
