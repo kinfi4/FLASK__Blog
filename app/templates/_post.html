@@ -5,7 +5,7 @@
 <div class="post">
     <div class="container">
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-md-1 padding-0-block">
                 <img src="{{ post.author.get_avatar(36) }}" alt="" class="post-user-icon">
             </div>
 
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <div class="col-md-1">
+            <div class="col-md-1 padding-0-block">
                 {% if post.author == current_user %}
                         <div class="">
                             <form action="{{ url_for('delete_post', id_=post.id) }}" method="POST">
