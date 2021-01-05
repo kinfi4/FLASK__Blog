@@ -5,6 +5,7 @@ from wtforms import ValidationError
 from app import app, db
 from app.forms import EditProfileForm
 from app.models import User, Post
+from app.utils.save_picture_into_file_system import save_pic
 
 
 @app.route('/user/<username>')
@@ -28,6 +29,11 @@ def user_page(username):
 def edit_profile():
     form = EditProfileForm(current_user.username, current_user.email)
     if form.validate_on_submit():
+        if form.avatar.data:
+            picture_path, new_filename = save_pic(form.avatar.data.filename)
+            form.avatar.data.save(picture_path)
+            current_user.image_file = new_filename
+
         current_user.username = form.name.data
         current_user.about_me = form.about_me.data
         current_user.email = form.email.data

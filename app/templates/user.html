@@ -19,7 +19,9 @@
                         <div class="row">
                                 <img src="{{ user.get_avatar(128) }}" alt="user_avatar" class="avatar">
                 
-                                <h1>{{ user.full_name }} <div class="username">@{{ user.username }}</div></h1>        
+                                <div class="name-block">
+                                    <h3>{{ user.full_name }} <div class="username">@{{ user.username }}</div></h3>
+                                </div>
                         </div>
 
                         <div class="row">
