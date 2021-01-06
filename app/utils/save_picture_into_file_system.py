@@ -1,5 +1,6 @@
 import os
 import secrets
+from PIL import Image
 
 from app import app
 
@@ -12,3 +13,14 @@ def save_pic(filename):
 
     return picture_path, picture_fn
 
+
+def save_form_pic(form_pic):
+    out_size = (255, 255)
+    img = Image.open(form_pic)
+    img.thumbnail(out_size)
+
+    picture_path, new_filename = save_pic(form_pic.filename)
+    form_pic.save(picture_path)
+
+    img.save(picture_path)
+    return new_filename
