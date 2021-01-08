@@ -48,16 +48,8 @@
             </div>
         </div>
     </nav>
-    {% with messages = get_flashed_messages(with_categories=True) %}
-        {% if messages %}
-                {% for cat, message in messages %}
-                <p class="{{ cat }}">
-                    {{ message }}
-                </p>
-                {% endfor %}
-        {% endif %}
-    {% endwith %}
 
+    <main>
         <div class="container-fluid">
             <div class="row">
                 <!-- Left span  -->
@@ -66,7 +58,19 @@
                 </div>
 
                 <!-- Main part -->
-                <div class="col-md-6">
+                <div class="col-md-6 main-content">
+                    {% with messages = get_flashed_messages(with_categories=True) %}
+                        {% if messages %}
+                                {% for category, message in messages %}
+                                <div class="message {{ category }}">
+                                        {{ message }}
+                                </div>
+                                {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                
+
+
                     {% block content %}
                         <h1 class="main-greeting">Welcome!</h1>
                     {% endblock content %}
@@ -88,5 +92,10 @@
             </div>
         </div>
 
+    </main>
+
+    <footer class="page-footer">
+        <h4 class="footer-logo">KINFBOOK</h4>
+    </footer>
 </body>
 </html>

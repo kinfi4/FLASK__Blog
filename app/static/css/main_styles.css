@@ -2,20 +2,25 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
-p.error, p.info {
+div.error, div.info {
     padding: 10px;
     font-weight: bold;
     border-radius: 5px;
-    width: 25%;
+    width: 70%;
+    border: 1px solid rgb(54, 54, 54);
+
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-p.error{
-    background-color: rgb(216, 69, 69);
+div.error{
+    background-color: rgb(223, 146, 146);
     
 }
 
-p.info{
-    background-color: rgb(49, 182, 49);
+div.info{
+    background-color: rgb(163, 223, 163);
 }
 
 
@@ -44,4 +49,23 @@ nav{
 
 .right-block{
     border-left: 0.5px solid rgb(165, 227, 230);
+}
+
+.page-footer{
+    background-color: rgb(240, 241, 241);
+    height: 100px;
+}
+
+.main-content{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+
+.footer-logo{
+    text-align: center;
+    width: 30%;
+    margin: auto;
+    line-height: 90px;
+    vertical-align: middle;
 }
