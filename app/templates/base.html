@@ -21,81 +21,85 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">KinfBook</a>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="{{ url_for('posts') }}" class="nav-link">Posts</a>
-                    </li>
-                    
-                    {% if current_user.is_anonymous %}
-                    <li class="nav-item">
-                        <a href="{{ url_for('login') }}" class="nav-link">Sign in</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a href="{{ url_for('user_page', username=current_user.username) }}" class="nav-link">Profile</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main>
-        <div class="container-fluid">
-            <div class="row">
-                <!-- Left span  -->
-                <div class="col-md-3 left-block">
-
-                </div>
-
-                <!-- Main part -->
-                <div class="col-md-6 main-content">
-                    {% with messages = get_flashed_messages(with_categories=True) %}
-                        {% if messages %}
-                                {% for category, message in messages %}
-                                <div class="message {{ category }}">
-                                        {{ message }}
-                                </div>
-                                {% endfor %}
+    <div class="box">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">KinfBook</a>
+    
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="{{ url_for('posts') }}" class="nav-link">Posts</a>
+                        </li>
+                        
+                        {% if current_user.is_anonymous %}
+                        <li class="nav-item">
+                            <a href="{{ url_for('login') }}" class="nav-link">Sign in</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a href="{{ url_for('user_page', username=current_user.username) }}" class="nav-link">Profile</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                        </li>
                         {% endif %}
-                    {% endwith %}
-                
-
-
-                    {% block content %}
-                        <h1 class="main-greeting">Welcome!</h1>
-                    {% endblock content %}
+                    </ul>
                 </div>
-
-
-                <!-- Right span  -->
-                <div class="col-md-3 right-block">
-                    {% if not current_user.is_authenticated %}
-                        <div class="sing-up-block">
-                            <div class="row">
-                                <p class="sing-up-caption">New on KinfBook?</p>
-                                <a href="{{ url_for('register') }} " class="btn btn-primary sing-up-button">Sing up</a>
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
-
             </div>
-        </div>
+        </nav>
+    
+        <main>
+            <div class="container-fluid main-part-page">
+                <div class="row">
+                    <!-- Left span  -->
+                    <div class="col-md-3 left-block">
+    
+                    </div>
+    
+                    <!-- Main part -->
+                    <div class="col-md-6 main-content">
+                        {% with messages = get_flashed_messages(with_categories=True) %}
+                            {% if messages %}
+                                    {% for category, message in messages %}
+                                    <div class="message {{ category }}">
+                                            {{ message }}
+                                    </div>
+                                    {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    
+    
+    
+                        {% block content %}
+                            <h1 class="main-greeting">Welcome!</h1>
+                        {% endblock content %}
+                    </div>
+    
+    
+                    <!-- Right span  -->
+                    <div class="col-md-3 right-block">
+                        {% if not current_user.is_authenticated %}
+                            <div class="sing-up-block">
+                                <div class="row">
+                                    <p class="sing-up-caption">New on KinfBook?</p>
+                                    <a href="{{ url_for('register') }} " class="btn btn-primary sing-up-button">Sing up</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+    
+                </div>
+            </div>
+    
+        </main>
+    
+        <footer class="page-footer">
+            <h4 class="footer-logo">KINFBOOK</h4>
+        </footer>
+    
+    </div>
 
-    </main>
-
-    <footer class="page-footer">
-        <h4 class="footer-logo">KINFBOOK</h4>
-    </footer>
 </body>
 </html>

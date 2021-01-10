@@ -7,15 +7,17 @@
 {% block content %}
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">
-                <a href="{{ url_for('posts', sort_by='world') }}" class="filter-posts-link"><h4 class="filter-posts-title active">world</h4></a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ url_for('posts', sort_by='country') }}" class="filter-posts-link"><h4 class="filter-posts-title">ukraine</h4></a>
-            </div>
-            <div class="col-md-4">
-                <a href="{{ url_for('posts', sort_by='following') }}" class="filter-posts-link"><h4 class="filter-posts-title">following</h4></a>
+        <div id="filter-block">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{{ url_for('posts', sort_by='world') }}" class="filter-posts-link"><h4 class="filter-posts-title">world</h4></a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ url_for('posts', sort_by='country') }}" class="filter-posts-link"><h4 class="filter-posts-title">ukraine</h4></a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{ url_for('posts', sort_by='following') }}" class="filter-posts-link"><h4 class="filter-posts-title">following</h4></a>
+                </div>    
             </div>
         </div>
     </div>
@@ -32,5 +34,7 @@
     {% if next_page %}
         <a href="{{ next_page }}">Older posts</a>
     {% endif %}
+
+    <script src="{{ url_for('static', filename='js/scripts_for_posts_page/tabs_active_script.js') }}"></script>
 
 {% endblock content %}
