@@ -67,7 +67,7 @@
 }
 
 .delete_button{
-    background: url('../img/delete_icon.png') no-repeat right;
+    background: url('../../img/delete_icon.png') no-repeat right;
     background-size: 30px 30px;
 }
 .delete_button:hover{

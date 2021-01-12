@@ -12,7 +12,6 @@ def create_post():
 
     if request.method == 'POST':
         post = Post()
-        print('here')
 
         if form.validate_on_submit():
             post.user_id = current_user.id

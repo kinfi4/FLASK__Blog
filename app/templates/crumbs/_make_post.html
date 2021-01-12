@@ -1,0 +1,42 @@
+<!-- {% block links %}
+{% endblock links %} -->
+
+<div id="create_post" class="hidden">
+    <div id="form-block">
+        <form action="{{ form_endpoint }}" method="POST">
+
+            <div class="container">
+                <span id="close">&times;</span>
+                <hr class="delimiter">
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2 vertical-col">
+                        <div class="create-post-avatar" style="background: url({{ current_user.get_avatar(40) }});background-size: 60px;"></div>
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="input-container">
+                                    <div role="text" contenteditable class="input-post-body" data-placeholder="Whats on your mind?"></div>
+                                </div>
+                            </div>
+        
+                            <div class="col-md-1 vertical-col"></div>       
+                        </div>
+                        <div class="create-post-lower-bar">
+                            <hr class="lower-delimiter">
+                            <div class="row">                  
+                                <button type="submit" class="btn create-post-submit-button">Share</button>
+                            </div>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </form>
+    </div>
+</div>

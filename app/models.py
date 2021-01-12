@@ -45,7 +45,7 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def get_avatar(self, size):
+    def get_avatar(self, size=32):
         return url_for('static', filename='media/users_avatars/' + self.image_file)
 
     def follow(self, user):

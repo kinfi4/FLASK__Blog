@@ -14,12 +14,13 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main-page-styles.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/crumbs_styles/create-post-styles.css') }}">
 
     {% block links %}
     {% endblock links%}
-
 </head>
 <body>
+    {% include 'crumbs/_make_post.html' %}
 
     <div class="box">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -99,6 +100,7 @@
             <h4 class="footer-logo">KINFBOOK</h4>
         </footer>
     
+        <script src="{{ url_for('static', filename='js/scripts_for_posts/create_post_script.js') }}"></script>
     </div>
 
 </body>

@@ -1,0 +1,130 @@
+.show-form-btn{
+    width: 140px;
+    height: 40px;
+
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.hidden{
+    display: none;
+}
+
+.visible{
+    display: block;
+}
+
+#form-block{
+    border: 1px solid rgb(165, 165, 235);
+    border-radius: 20px;
+
+    background-color:  rgb(248, 252, 255);
+    width: 40%;
+    height: 300px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 0;
+
+    max-height: 90%;
+    position: relative;
+}
+
+#create_post{
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.form-caption{
+    text-align: center;
+    margin-top: 25px;
+}
+
+#post-body{
+    margin: auto;
+}
+
+.create-post-avatar{
+    width: 60px;
+    height: 60px;
+    background-size: 60px;
+
+    border-radius: 50%;
+    float: right;
+    margin-right: 10%;
+}
+
+.vertical-col{
+    padding: 0;
+}
+
+.input-post-body{
+    border: 0;
+    width: 100%;
+    color: rgb(51, 51, 51);
+    background-color:  rgb(248, 252, 255);
+    outline: none;
+    resize: none;
+    cursor: text;
+    font-size: 20px;
+
+    margin-top: 10px;
+}
+
+.input-post-body:empty::before{
+    color: rgb(144, 144, 144);
+    content: attr(data-placeholder);
+}
+
+#close{
+    font-size: 32px;
+    border-radius: 50%;
+    color: #aaa;
+    font-weight: bold;
+    transition: linear 0.2s;
+    cursor: pointer;
+}
+
+#close:hover{
+    padding: 5px;
+    color: rgb(243, 103, 103);
+}
+
+.delimiter{
+    margin-top: 0;
+    color: rgb(0, 0, 0);
+}
+
+#input-text{
+    display: none;
+}
+
+.create-post-lower-bar{
+    position: absolute;
+    bottom: 4%;
+    width: 80%;
+}
+
+.create-post-submit-button{
+    width: auto;
+
+    background-color: rgb(75, 174, 255);
+    color: rgb(255, 255, 255);
+    border: 00.5px solid rgb(53, 53, 53);
+    padding: 7px 15px;
+    border-radius: 20px;
+
+    margin-left: 12px;
+}
+
+.lower-delimiter{
+    margin-bottom: 10px;
+    color: rgb(128, 128, 128);
+}
