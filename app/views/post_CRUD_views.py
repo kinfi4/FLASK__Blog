@@ -1,16 +1,27 @@
 from flask import render_template, flash, redirect, url_for, request, abort
 from flask_login import current_user, login_required
+from flask.views import MethodView
 
 from app import app, db
 from app.forms import CreatePostForm
 from app.models import Post
 
 
-@app.route('/create-post', methods=['GET', 'POST'])
-def create_post():
-    form = CreatePostForm()
+class CreatePost(MethodView):
+    @login_required
+    def get(self):
+        return render_template('forms/create-post.html', **self.prepare_context())
 
-    if request.method == 'POST':
+    @staticmethod
+    def prepare_context():
+        return {
+            'form': CreatePostForm(),
+            'form_endpoint': url_for('create_post')
+        }
+
+    @login_required
+    def post(self):
+        form = CreatePostForm()
         post = Post()
 
         if form.validate_on_submit():
@@ -21,15 +32,6 @@ def create_post():
             db.session.commit()
 
         return redirect(url_for('user_page', username=current_user.username))
-
-    else:
-        context = {
-            'form': form,
-            'title': 'Create post',
-            'form_endpoint': url_for('create_post')
-        }
-
-        return render_template('forms/create-post.html', **context)
 
 
 @app.route('/delete_post/<id_>', methods=['POST'])
@@ -72,3 +74,5 @@ def edit_post(id_):
 
         return render_template('forms/create-post.html', **context)
 
+
+app.add_url_rule('/create-post', view_func=CreatePost.as_view('create_post'), methods=['GET', 'POST'])
