@@ -1,4 +1,5 @@
 from flask_login import current_user
+from flask import redirect, url_for
 
 from app import db
 from app.forms import CreatePostForm
@@ -6,7 +7,7 @@ from app.models import Post
 
 
 class CreatePostMixin:
-    def post(self):
+    def post(self, username=None):
         form = CreatePostForm()
         post = Post()
 
@@ -16,6 +17,8 @@ class CreatePostMixin:
 
             db.session.add(post)
             db.session.commit()
+
+        return redirect(url_for('user_page', username=current_user.username))
 
     @property
     def mixin_context(self):

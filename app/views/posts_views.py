@@ -3,10 +3,11 @@ from flask_login import current_user
 from flask.views import MethodView
 
 from app import app, db
+from app.mixins.create_post_mixin import CreatePostMixin
 from app.models import Post
 
 
-class Posts(MethodView):
+class Posts(CreatePostMixin, MethodView):
     def get(self):
         filters = request.args.get('sort_by', 'world')
         page = request.args.get('page', 1, type=int)
@@ -25,7 +26,7 @@ class Posts(MethodView):
         prev_page = url_for('posts', page=posts_for_page.prev_num) if posts_for_page.has_prev else None
 
         return render_template('posts.html', title='Home', posts=posts_for_page.items, next_page=next_page,
-                               prev_page=prev_page)
+                               prev_page=prev_page, form=self.mixin_context.get('form'))
 
 
 app.add_url_rule('/explore', view_func=Posts.as_view('posts'))

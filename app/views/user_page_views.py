@@ -4,7 +4,7 @@ from flask_login import current_user, login_required
 
 from app import app, db
 from app.mixins.create_post_mixin import CreatePostMixin
-from app.forms import EditProfileForm
+from app.forms import EditProfileForm, CreatePostForm
 from app.models import User, Post
 from app.utils.save_picture_into_file_system import save_form_pic
 
@@ -23,7 +23,7 @@ class UserPage(CreatePostMixin, MethodView):
                             page=posts_for_page.prev_num) if posts_for_page.has_prev else None
 
         return render_template('user.html', user=user, posts=posts_for_page.items, next_page=next_page,
-                               prev_page=prev_page, **self.mixin_context)
+                               prev_page=prev_page, form=CreatePostForm())
 
 
 class EditProfile(MethodView):

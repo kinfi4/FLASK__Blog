@@ -30,5 +30,6 @@ document.getElementById('create_post').onclick = function(event){
 document.getElementById('close').onclick = hide_post_block;
 
 document.getElementsByClassName('input-post-body')[0].oninput = function(){
-    form_input.content = input_body.content;
+    // alert(input_body.textContent)
+    form_input.value = input_body.textContent;
 }
