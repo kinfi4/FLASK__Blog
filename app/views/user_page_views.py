@@ -3,12 +3,13 @@ from flask.views import MethodView
 from flask_login import current_user, login_required
 
 from app import app, db
+from app.mixins.create_post_mixin import CreatePostMixin
 from app.forms import EditProfileForm
 from app.models import User, Post
 from app.utils.save_picture_into_file_system import save_form_pic
 
 
-class UserPage(MethodView):
+class UserPage(CreatePostMixin, MethodView):
     def get(self, username):
         user = User.query.filter_by(username=username).first_or_404()
         page = request.args.get('page', 1, type=int)
@@ -22,7 +23,7 @@ class UserPage(MethodView):
                             page=posts_for_page.prev_num) if posts_for_page.has_prev else None
 
         return render_template('user.html', user=user, posts=posts_for_page.items, next_page=next_page,
-                               prev_page=prev_page)
+                               prev_page=prev_page, **self.mixin_context)
 
 
 class EditProfile(MethodView):
@@ -56,5 +57,5 @@ class EditProfile(MethodView):
             return redirect(url_for('/edit_profile', form=form))
 
 
-app.add_url_rule(rule='/user/<string:username>', view_func=UserPage.as_view('user_page'))
+app.add_url_rule(rule='/user/<string:username>', view_func=UserPage.as_view('user_page'), methods=['GET', 'POST'])
 app.add_url_rule(rule='/edit_profile', view_func=EditProfile.as_view('edit_profile'), methods=['GET', 'POST'])
