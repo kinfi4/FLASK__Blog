@@ -22,8 +22,14 @@ class UserPage(CreatePostMixin, MethodView):
         prev_page = url_for('user_page', username=username,
                             page=posts_for_page.prev_num) if posts_for_page.has_prev else None
 
-        return render_template('user.html', user=user, posts=posts_for_page.items, next_page=next_page,
-                               prev_page=prev_page, form=CreatePostForm())
+        form = CreatePostForm()
+
+        context = {
+            'form': form, 'user': user, 'posts': posts_for_page.items,
+            'next_page': next_page, 'prev_page': prev_page
+        }
+
+        return render_template('user.html', **context)
 
 
 class EditProfile(MethodView):

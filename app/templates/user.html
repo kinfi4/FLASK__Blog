@@ -10,6 +10,14 @@
 
 {% block content %}
 
+{% if current_user.is_authenticated %}
+    {% include 'crumbs/_make_post.html' %}
+{% endif %}
+
+{% if current_user.is_authenticated %}
+    {% include 'crumbs/_delete_confirm.html' %}
+{% endif %}
+
     <div class="container user-info">
         <div class="row">
         <!-- Main part -->
@@ -69,7 +77,7 @@
                     {% if user == current_user %}
                         <div class="write-post-block">
                             <span class="what_on_mind_phrase">Whats on your mind?</span>
-                            <button class="show-form-btn">Write</button>
+                            <button class="show-form-btn btn btn-primary">Write</button>
                         </div>
                     {% endif %}
                 </div>

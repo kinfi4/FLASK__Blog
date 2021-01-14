@@ -4,6 +4,7 @@ from flask import render_template
 from flask_login import current_user
 
 from app import app, db
+from app.forms import CreatePostForm
 
 
 @app.before_request
@@ -16,6 +17,4 @@ def update_last_seen():
 @app.route('/')
 def main():
     title = 'Main Page'
-    return render_template('base.html', title=title)
-
-
+    return render_template('base.html', title=title, form=CreatePostForm())

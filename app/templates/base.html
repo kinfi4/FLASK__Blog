@@ -15,15 +15,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main-page-styles.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/crumbs_styles/create-post-styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/crumbs_styles/confirm-window-styles.css') }}">
 
     {% block links %}
     {% endblock links%}
 </head>
 <body>
-    {% if current_user.is_authenticated %}
-        {% include 'crumbs/_make_post.html' %}
-    {% endif %}
 
+    
     <div class="box">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -52,7 +51,7 @@
                 </div>
             </div>
         </nav>
-    
+
         <main>
             <div class="container-fluid main-part-page">
                 <div class="row">

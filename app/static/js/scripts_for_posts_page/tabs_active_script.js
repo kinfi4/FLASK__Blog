@@ -10,13 +10,13 @@ window.onload = function(){
     if(urlParams.get('sort_by') == 'world'){
         tabs[0].classList.add('active');
     }
-
-    if(urlParams.get('sort_by') == 'country'){
+    else if(urlParams.get('sort_by') == 'country'){
         tabs[1].classList.add('active');
     }
-
-    if(urlParams.get('sort_by') == 'following'){
+    else if(urlParams.get('sort_by') == 'following'){
         tabs[2].classList.add('active');
+    }else{
+        tabs[0].classList.add('active');
     }
 }
 

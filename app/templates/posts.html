@@ -6,6 +6,11 @@
 
 {% block content %}
 
+{% if current_user.is_authenticated %}
+    {% include 'crumbs/_make_post.html' %}
+{% endif %}
+
+
     <div class="container-fluid">
         <div id="filter-block">
             <div class="row">
