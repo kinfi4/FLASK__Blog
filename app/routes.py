@@ -10,7 +10,7 @@ from app.forms import CreatePostForm
 @app.before_request
 def update_last_seen():
     if current_user.is_authenticated:
-        current_user.last_seen = datetime.now()
+        current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
 

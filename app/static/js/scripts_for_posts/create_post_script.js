@@ -7,6 +7,15 @@ function hide_post_block(){
     document.getElementById('create_post').classList.add('hidden');
 }
 
+function show_confirm_window(){
+    if(input_body.textContent != ''){
+        document.getElementById('confirm_window').classList.remove('hidden');
+    }
+    else{
+        hide_post_block();
+    }
+}
+
 
 document.getElementsByClassName('show-form-btn')[0].onmousedown = function(event){
     let createPost = document.getElementById('create_post');
@@ -17,13 +26,14 @@ document.getElementsByClassName('show-form-btn')[0].onmousedown = function(event
 document.getElementById('create_post').onclick = function(event){
     let targer = event.target;
     if(targer == document.getElementById('create_post')){
-        hide_post_block();
+        show_confirm_window();
     }
 }
 
-document.getElementById('close').onclick = hide_post_block;
+document.getElementById('close').onclick = function(){
+    show_confirm_window();
+}
 
 document.getElementsByClassName('input-post-body')[0].oninput = function(){
-    // alert(input_body.textContent)
     form_input.value = input_body.textContent;
 }

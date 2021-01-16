@@ -14,7 +14,12 @@
                     <div class="post-username">
                         <a href="{{ url_for('user_page', username=post.author.username) }}" class="post-user-full_name">{{ post.author.full_name }}</a>
                         <a href="{{ url_for('user_page', username=post.author.username) }}" class="post-user-username">@{{ post.author.username }}</a>
-                        <span class="post-date">{{ post.post_date }}</span>    
+                        <span class="post-date">                                
+                            {% if post.post_date.time_passed %}
+                                    {{ moment(post.timespan).fromNow(true) }}
+                                {% else %}
+                                    {{ moment(post.timespan).format(post.post_date.time_format) }}
+                            {% endif %}</span>    
                     </div>
                 </div>
                 

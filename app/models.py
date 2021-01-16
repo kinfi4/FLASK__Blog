@@ -7,7 +7,7 @@ from flask_login import UserMixin
 from app import db, login, app
 
 from config import MEDIA_FOLDER
-from app.utils.get_passed_time import get_time_passed
+from app.utils.get_passed_time import get_time_format
 
 
 @login.user_loader
@@ -29,7 +29,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     about_me = db.Column(db.String(500))
-    last_seen = db.Column(db.DateTime, default=datetime.now())
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     posts = db.relationship('Post', backref='author', lazy=True)
 
@@ -71,7 +71,7 @@ class User(UserMixin, db.Model):
 
     @property
     def get_last_seen(self):
-        return get_time_passed(self.last_seen)
+        return get_time_format(self.last_seen)
 
     @property
     def posts_number(self):
@@ -99,16 +99,12 @@ class User(UserMixin, db.Model):
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(length=10e4))
-    timespan = db.Column(db.DateTime, index=True, default=datetime.now)
+    timespan = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-    # @property
-    # def author(self):
-    #     return User.query.filter_by(id=self.user_id).first()
 
     @property
     def post_date(self):
-        return get_time_passed(self.timespan)
+        return get_time_format(self.timespan)
 
     def __repr__(self):
         return f'{self.author.username}: {self.body}'

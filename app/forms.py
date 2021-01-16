@@ -61,7 +61,7 @@ class EditProfileForm(FlaskForm):
 
 class CreatePostForm(FlaskForm):
     body = TextAreaField(label='Post: ')
-    submit = SubmitField('POST')
+    submit = SubmitField('Share')
 
 
 class EmailForResetPasswordForm(FlaskForm):
