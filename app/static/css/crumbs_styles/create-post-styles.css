@@ -116,9 +116,9 @@
     width: auto;
 
     background-color: rgb(58, 166, 255);
+    border: white 1px solid;
     color: rgb(255, 255, 255);
-    border: 00.5px solid rgb(53, 53, 53);
-    padding: 7px 15px;
+    padding: 7px 25px;
     border-radius: 20px;
 
     margin-left: 12px;

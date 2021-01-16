@@ -37,13 +37,26 @@ nav{
 }
 
 .nav-link{
-    font-size: larger;    
+    font-size: 25px;
+    color: rgb(47, 47, 47);
+    border-radius: 50px;
+    width: auto;
+
+    transition: linear 0.5s;
 }
 
-
-.logo{
-    display: inline;
+.nav-link:hover{
+    font-size: 27px;
+    color: rgb(47, 47, 47);
+    background-color: #44e3ff9f;
 }
+
+.navigation{
+    text-align: left;
+    margin-left: 30%;
+    margin-top: 10%;
+}
+
 
 .left-block{
     border-right: 0.5px solid rgb(165, 227, 230);
@@ -54,7 +67,7 @@ nav{
 }
 
 .page-footer{
-    background-color: rgb(240, 241, 241);
+    background-color: rgb(248, 248, 248);
     height: 100px;
 }
 
@@ -70,4 +83,28 @@ nav{
     margin: auto;
     line-height: 90px;
     vertical-align: middle;
+}
+
+.upper-block{
+    height: 45px;
+    width: 100%;
+    margin: 0;
+    transition: linear 0.5s;
+
+    background-color: rgb(248, 248, 248);
+}
+
+.upper-block:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.upper-logo{
+    margin-top: 5px;
+    color: rgb(109, 109, 109);
+    text-decoration: none;
+    font-size: 30px;
+    transition: linear 0.3s;
+}
+.upper-logo:hover{
+    color: rgb(168, 168, 168);
 }
