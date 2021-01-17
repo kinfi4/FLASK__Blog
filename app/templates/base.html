@@ -39,13 +39,29 @@
                     <div class="col-md-3 left-block">
                         <div class="container">
                             <div class="navigation">
-                                <div class="row"><a href="{{ url_for('posts') }}" class="nav-link">Explore</a></div>
+                                <div class="row">
+                                    <a href="{{ url_for('posts') }}" class="nav-link" style="background: url({{ url_for('static', filename='img/explore_icon.png')}}) left no-repeat; background-size: 25px;">
+                                        Explore
+                                    </a>
+                                </div>
 
                                 {% if current_user.is_anonymous %}
-                                    <div class="row"><a href="{{ url_for('login') }}" class="nav-link">Sign in</a></div>
+                                    <div class="row">
+                                        <a href="{{ url_for('login') }}" class="nav-link" style="background: url({{ url_for('static', filename='img/signin_icon.png')}}) left no-repeat; background-size: 25px;">
+                                            Sign in
+                                        </a>
+                                    </div>
                                 {% else %}
-                                    <div class="row"><a href="{{ url_for('user_page', username=current_user.username) }}" class="nav-link">Profile</a></div>
-                                    <div class="row"><a href="{{ url_for('logout') }}" class="nav-link">Settings</a></div>
+                                    <div class="row">
+                                        <a href="{{ url_for('user_page', username=current_user.username) }}" class="nav-link" style="background: url({{ url_for('static', filename='img/profile_icon.png')}}) left no-repeat; background-size: 25px;">
+                                            Profile
+                                        </a>
+                                    </div>
+                                    <div class="row">
+                                        <a href="{{ url_for('logout') }}" class="nav-link" style="background: url({{ url_for('static', filename='img/settings_icon.png')}}) left no-repeat; background-size: 25px;">
+                                            Settings
+                                        </a>
+                                    </div>
                                 {% endif %}    
                             </div>
                         </div>

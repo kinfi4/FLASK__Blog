@@ -41,14 +41,14 @@ nav{
     color: rgb(47, 47, 47);
     border-radius: 50px;
     width: auto;
+    padding-left: 35px;
 
     transition: linear 0.5s;
 }
 
 .nav-link:hover{
     font-size: 27px;
-    color: rgb(47, 47, 47);
-    background-color: #44e3ff9f;
+    color: rgb(92, 92, 92);
 }
 
 .navigation{
