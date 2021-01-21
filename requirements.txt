@@ -1,111 +1,105 @@
-Package                 Version
------------------------ -------
-AccessControl           5.0    
-Acquisition             4.7    
-alembic                 1.4.3  
-AuthEncoding            4.2    
-beautifulsoup4          4.9.3  
-blinker                 1.4    
-BTrees                  4.7.2  
-cffi                    1.14.4 
-Chameleon               3.8.1  
-click                   7.1.2  
-DateTime                4.3    
-dnspython               2.0.0  
-DocumentTemplate        4.0    
-email-validator         1.1.2  
-ExtensionClass          4.5.0  
-Flask                   1.1.2  
-Flask-Login             0.5.0  
-Flask-Mail              0.9.1  
-Flask-Migrate           2.5.3  
-Flask-SQLAlchemy        2.4.4  
-Flask-WTF               0.14.3 
-idna                    2.10   
-itsdangerous            1.1.0  
-Jinja2                  2.11.2 
-Mako                    1.1.3  
-MarkupSafe              1.1.1  
-MultiMapping            4.1    
-PasteDeploy             2.1.1  
-Persistence             3.0    
-persistent              4.6.4  
-Pillow                  8.0.1  
-pip                     20.0.2 
-pkg-resources           0.0.0  
-psycopg2-binary         2.8.6  
-pycparser               2.20   
-PyJWT                   2.0.0  
-python-dateutil         2.8.1  
-python-editor           1.0.4  
-python-gettext          4.0    
-pytz                    2020.4 
-RestrictedPython        5.1    
-roman                   3.3    
-setuptools              44.0.0 
-six                     1.15.0 
-soupsieve               2.1    
-SQLAlchemy              1.3.20 
-transaction             3.0.1  
-waitress                1.4.4  
-WebOb                   1.8.6  
-WebTest                 2.0.35 
-Werkzeug                1.0.1  
-WSGIProxy2              0.4.6  
-WTForms                 2.3.3  
-z3c.pt                  3.3.0  
-zc.lockfile             2.0    
-ZConfig                 3.5.0  
-zExceptions             4.1    
-ZODB                    5.6.0  
-zodbpickle              2.0.0  
-zope.annotation         4.7.0  
-zope.browser            2.3    
-zope.browsermenu        4.4    
-zope.browserpage        4.4.0  
-zope.browserresource    4.4    
-zope.cachedescriptors   4.3.1  
-zope.component          4.6.2  
-zope.configuration      4.4.0  
-zope.container          4.4.0  
-zope.contentprovider    4.2.1  
-zope.contenttype        4.5.0  
-zope.deferredimport     4.3.1  
-zope.deprecation        4.4.0  
-zope.dottedname         4.3    
-zope.event              4.5.0  
-zope.exceptions         4.4    
-zope.filerepresentation 5.0.0  
-zope.globalrequest      1.5    
-zope.hookable           5.0.1  
-zope.i18n               4.7.0  
-zope.i18nmessageid      5.0.1  
-zope.interface          5.2.0  
-zope.lifecycleevent     4.3    
-zope.location           4.2    
-zope.pagetemplate       4.5.0  
-zope.processlifetime    2.3.0  
-zope.proxy              4.3.5  
-zope.ptresource         4.2.0  
-zope.publisher          5.2.1  
-zope.schema             6.0.0  
-zope.security           5.1.1  
-zope.sequencesort       4.1.2  
-zope.site               4.4.0  
-zope.size               4.3    
-zope.sqlalchemy         1.3    
-zope.structuredtext     4.3    
-zope.tal                4.4    
-zope.tales              5.1    
-zope.testbrowser        5.5.1  
-zope.testing            4.7    
-zope.traversing         4.4.1  
-zope.viewlet            4.2.1  
-
-DateTime~=4.3
-Flask~=1.1.2
-WTForms~=2.3.3
-Werkzeug~=1.0.1
-Pillow~=8.0.1
-SQLAlchemy~=1.3.20
-alembic~=1.4.3
+AccessControl==5.0
+Acquisition==4.7
+alembic==1.4.3
+AuthEncoding==4.2
+beautifulsoup4==4.9.3
+blinker==1.4
+BTrees==4.7.2
+certifi==2020.12.5
+cffi==1.14.4
+Chameleon==3.8.1
+click==7.1.2
+DateTime==4.3
+dnspython==2.0.0
+DocumentTemplate==4.0
+dominate==2.6.0
+elasticsearch==7.10.1
+email-validator==1.1.2
+ExtensionClass==4.5.0
+Flask==1.1.2
+Flask-Bootstrap==3.3.7.1
+Flask-Login==0.5.0
+Flask-Mail==0.9.1
+Flask-Migrate==2.5.3
+Flask-Moment==0.11.0
+Flask-SQLAlchemy==2.4.4
+Flask-WTF==0.14.3
+idna==2.10
+itsdangerous==1.1.0
+Jinja2==2.11.2
+Mako==1.1.3
+MarkupSafe==1.1.1
+MultiMapping==4.1
+PasteDeploy==2.1.1
+Persistence==3.0
+persistent==4.6.4
+Pillow==8.0.1
+psycopg2-binary==2.8.6
+pycparser==2.20
+PyJWT==2.0.0
+python-dateutil==2.8.1
+python-editor==1.0.4
+python-gettext==4.0
+pytz==2020.4
+RestrictedPython==5.1
+roman==3.3
+six==1.15.0
+soupsieve==2.1
+SQLAlchemy==1.3.20
+transaction==3.0.1
+urllib3==1.26.2
+visitor==0.1.3
+waitress==1.4.4
+WebOb==1.8.6
+WebTest==2.0.35
+Werkzeug==1.0.1
+WSGIProxy2==0.4.6
+WTForms==2.3.3
+z3c.pt==3.3.0
+zc.lockfile==2.0
+ZConfig==3.5.0
+zExceptions==4.1
+ZODB==5.6.0
+zodbpickle==2.0.0
+zope.annotation==4.7.0
+zope.browser==2.3
+zope.browsermenu==4.4
+zope.browserpage==4.4.0
+zope.browserresource==4.4
+zope.cachedescriptors==4.3.1
+zope.component==4.6.2
+zope.configuration==4.4.0
+zope.container==4.4.0
+zope.contentprovider==4.2.1
+zope.contenttype==4.5.0
+zope.deferredimport==4.3.1
+zope.deprecation==4.4.0
+zope.dottedname==4.3
+zope.event==4.5.0
+zope.exceptions==4.4
+zope.filerepresentation==5.0.0
+zope.globalrequest==1.5
+zope.hookable==5.0.1
+zope.i18n==4.7.0
+zope.i18nmessageid==5.0.1
+zope.interface==5.2.0
+zope.lifecycleevent==4.3
+zope.location==4.2
+zope.pagetemplate==4.5.0
+zope.processlifetime==2.3.0
+zope.proxy==4.3.5
+zope.ptresource==4.2.0
+zope.publisher==5.2.1
+zope.schema==6.0.0
+zope.security==5.1.1
+zope.sequencesort==4.1.2
+zope.site==4.4.0
+zope.size==4.3
+zope.sqlalchemy==1.3
+zope.structuredtext==4.3
+zope.tal==4.4
+zope.tales==5.1
+zope.testbrowser==5.5.1
+zope.testing==4.7
+zope.traversing==4.4.1
+zope.viewlet==4.2.1

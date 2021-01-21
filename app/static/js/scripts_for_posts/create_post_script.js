@@ -1,6 +1,8 @@
 let formBlock = document.getElementById('form-block');
 let input_body = document.getElementsByClassName('input-post-body')[0];
 let form_input = document.getElementById('input-text');
+let slider = document.getElementById('slider');
+
 
 function hide_post_block(){
     document.getElementById('create_post').classList.remove('visible');
@@ -36,4 +38,17 @@ document.getElementById('close').onclick = function(){
 
 document.getElementsByClassName('input-post-body')[0].oninput = function(){
     form_input.value = input_body.textContent;
+
+    if(input_body.textContent.length > 250 && 300 > input_body.textContent.length){
+        slider.textContent = 300 - input_body.textContent.length;
+        slider.style.color = 'skyblue';
+    }
+    else if(input_body.textContent.length > 300){
+        slider.textContent = input_body.textContent.length - 300;
+        slider.style.color = 'rgb(251, 140, 65)';
+    }
+    else{
+        slider.textContent = '';
+    }
+
 }
