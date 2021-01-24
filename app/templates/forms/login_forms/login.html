@@ -7,6 +7,7 @@
     
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main_styles.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/forms_styles/login-register-form-styles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/crumbs_styles/message-styles.css') }}">
 
     </head>
 
@@ -19,17 +20,26 @@
     
                 <div class="col-md-6">
 
-                    <div class="error-block">
-                        {% with messages = get_flashed_messages(with_categories=True) %}
-                            {% if messages %}
-                                    {% for category, message in messages %}
-                                    <div class="message {{ category }}">
+                    {% with messages = get_flashed_messages(with_categories=True) %}
+                        {% if messages %}
+                            <div id="messages-block">
+                                {% for category, message in messages %}
+                                <div class="message {{ category }}">
+                                    <div class="message-inner-container">
+                                        <div class="text">
                                             {{ message }}
+                
+                                            <span class="close-message">&times;</span>
+                                        </div>
+                                        
                                     </div>
-                                    {% endfor %}
-                            {% endif %}
-                        {% endwith %}
-                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                
+                            <script src="{{ url_for('static', filename='js/main_scripts/messages_scripts.js') }}"></script>
+                        {% endif %}
+                    {% endwith %}
 
                     <div class="form-block">
                         <div class="row">

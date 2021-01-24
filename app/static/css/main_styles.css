@@ -2,6 +2,8 @@ html, body{
     background-color: rgb(255, 255, 255);
     height: 100%;
     margin: 0;
+
+    position: relative;
 }
 
 main{
@@ -20,28 +22,6 @@ footer{
 .main-part-page{
     height: 100%;
 }
-
-div.error, div.info {
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 5px;
-    width: 70%;
-    border: 1px solid rgb(54, 54, 54);
-
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-div.error{
-    background-color: rgb(223, 146, 146);
-    
-}
-
-div.info{
-    background-color: rgb(163, 223, 163);
-}
-
 
 .post-article{
     width: 200px;
@@ -141,4 +121,6 @@ nav{
 .search-form:focus{
     background-color: rgb(255, 255, 255);
 }
+
+
 

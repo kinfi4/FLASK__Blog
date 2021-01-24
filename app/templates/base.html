@@ -16,11 +16,34 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main-page-styles.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/crumbs_styles/create-post-styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/crumbs_styles/confirm-window-styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/crumbs_styles/message-styles.css') }}">
 
     {% block links %}
     {% endblock links%}
 </head>
 <body>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <div id="messages-block">
+                {% for category, message in messages %}
+                <div class="message {{ category }}">
+                    <div class="message-inner-container">
+                        <div class="text">
+                            {{ message }}
+
+                            <span class="close-message">&times;</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <script src="{{ url_for('static', filename='js/main_scripts/messages_scripts.js') }}"></script>
+        {% endif %}
+    {% endwith %}
+
 
     {{ moment.include_jquery() }}
     {{ moment.include_moment() }}
@@ -76,19 +99,7 @@
                     </div>
     
                     <!-- Main part -->
-                    <div class="col-md-6 main-content block">
-                        {% with messages = get_flashed_messages(with_categories=True) %}
-                            {% if messages %}
-                                    {% for category, message in messages %}
-                                    <div class="message {{ category }}">
-                                            {{ message }}
-                                    </div>
-                                    {% endfor %}
-                            {% endif %}
-                        {% endwith %}
-                    
-    
-    
+                    <div class="col-md-6 main-content block">                     
                         {% block content %}
                             <h1 class="main-greeting">Welcome!</h1>
                         {% endblock content %}

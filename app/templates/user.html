@@ -37,13 +37,15 @@
                         </div>
 
                         <div class="row">
-                            <p>Last seen: 
-                                {% if user.get_last_seen.time_passed %}
-                                    {{ moment(user.last_seen).fromNow() }}
-                                {% else %}
-                                    {{ moment(user.last_seen).format(user.get_last_seen.time_format) }}
-                                {% endif %}
-                            </p>
+                            {% if user != current_user %}
+                                <p>Last seen: 
+                                    {% if user.get_last_seen.time_passed %}
+                                        {{ moment(user.last_seen).fromNow() }}
+                                    {% else %}
+                                        {{ moment(user.last_seen).format(user.get_last_seen.time_format) }}
+                                    {% endif %}
+                                </p>
+                            {% endif %}
                             
                             {% if not current_user.is_authenticated %}
                             {% else %}
