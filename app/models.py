@@ -8,6 +8,7 @@ from app import db, login, app
 
 from config import MEDIA_FOLDER
 from app.utils.get_passed_time import get_time_format
+from app.mixins.searchable_mixin import SearchableMixin
 
 
 @login.user_loader
@@ -96,7 +97,9 @@ class User(UserMixin, db.Model):
         return f'User: {self.username}'
 
 
-class Post(db.Model):
+class Post(SearchableMixin, db.Model):
+    __searchable__ = ['body']
+
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(length=300))
     timespan = db.Column(db.DateTime, index=True, default=datetime.utcnow)
