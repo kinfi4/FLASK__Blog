@@ -1,4 +1,4 @@
-from flask import render_template, request, url_for
+from flask import render_template, request, url_for, redirect, g
 from flask_login import current_user
 from flask.views import MethodView
 
@@ -29,4 +29,23 @@ class Posts(CreatePostMixin, MethodView):
                                prev_page=prev_page, form=self.mixin_context.get('form'))
 
 
+class Search(MethodView):
+    def get(self):
+        if not g.search_form.validate():
+            return redirect(url_for('posts'))
+
+        page = request.args.get('page', 1, type=int)
+        posts, total = Post.search(g.search_form.q.data, page, app.config['POSTS_PER_PAGE'])
+
+        next_url = url_for('search', q=g.search_form.q.data, page=page + 1) \
+            if total > page * app.config['POSTS_PER_PAGE'] else None
+
+        prev_url = url_for('search', q=g.search_form.q.data, page=page - 1) \
+            if page > 1 else None
+
+        return render_template('search.html', title='Search', posts=posts,
+                               next_url=next_url, prev_url=prev_url)
+
+
 app.add_url_rule('/explore', view_func=Posts.as_view('posts'))
+app.add_url_rule('/search', view_func=Search.as_view('search'))

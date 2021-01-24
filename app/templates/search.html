@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search-page-styles.css') }}">
+{% endblock links %}
+
+{% block content %}
+    {% for post in posts %}
+        {% include 'crumbs/_post.html' %}
+    {% endfor %}
+
+    {% if prev_page %}
+        <a href="{{ prev_page }}">Newer posts</a>
+    {% endif %}
+
+    {% if next_page %}
+        <a href="{{ next_page }}">Older posts</a>
+    {% endif %}
+{% endblock content %}

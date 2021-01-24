@@ -25,10 +25,18 @@
     {{ moment.include_jquery() }}
     {{ moment.include_moment() }}
 
-    <div class="box">
         <div class="upper-block">
             <div class="container">
                 <a class="upper-logo" href="{{ url_for('posts') }}">KinfBook</a>
+                
+                <div class="search-form-block">
+                    <form action="{{ url_for('search') }}" method="GET">
+                        <div class="">
+                            {{ g.search_form.q(size=20, class='search-form',
+                                placeholder=g.search_form.q.label.text) }}
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -36,7 +44,7 @@
             <div class="container-fluid main-part-page">
                 <div class="row">
                     <!-- Left span  -->
-                    <div class="col-md-3 left-block">
+                    <div class="col-md-3 left-block block">
                         <div class="container">
                             <div class="navigation">
                                 <div class="row">
@@ -68,7 +76,7 @@
                     </div>
     
                     <!-- Main part -->
-                    <div class="col-md-6 main-content">
+                    <div class="col-md-6 main-content block">
                         {% with messages = get_flashed_messages(with_categories=True) %}
                             {% if messages %}
                                     {% for category, message in messages %}
@@ -88,7 +96,7 @@
     
     
                     <!-- Right span  -->
-                    <div class="col-md-3 right-block">
+                    <div class="col-md-3 right-block block">
                         {% if not current_user.is_authenticated %}
                             <div class="sing-up-block">
                                 <div class="row">
@@ -110,7 +118,6 @@
 
         <script src="{{ url_for('static', filename='js/scripts_for_posts/create_post_script.js') }}"></script>
         <script src="{{ url_for('static', filename='js/scripts_for_posts/delete_confirm_script.js') }}"></script>
-    </div>
 
 </body>
 </html>

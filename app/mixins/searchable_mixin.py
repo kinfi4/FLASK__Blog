@@ -7,7 +7,6 @@ class SearchableMixin:
     def search(cls, expression, page, per_page):
         ids, total = query_index(cls.__tablename__, expression, page, per_page)
         if total == 0:
-            print('There are 0 matches')
             return cls.query.filter_by(id=0), 0
 
         when = [(id_, index) for index, id_ in enumerate(ids)]
