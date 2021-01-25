@@ -16,7 +16,7 @@ class Posts(CreatePostMixin, MethodView):
             posts_for_page = Post.query.order_by(Post.timespan.desc()).paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         elif filters == 'following':
-            posts_for_page = current_user.followed_posts.paginate(
+            posts_for_page = current_user.followed_posts.order_by(Post.timespan.desc()).paginate(
                 page, app.config['POSTS_PER_PAGE'], False)
         else:
             posts_for_page = Post.query.order_by(Post.timespan.desc()).paginate(

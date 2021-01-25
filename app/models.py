@@ -68,7 +68,7 @@ class User(UserMixin, db.Model):
             followers.c.follower_id == self.id)
         own = Post.query.filter_by(user_id=self.id)
 
-        return followed.union(own).order_by(Post.timespan)
+        return followed.union(own).order_by(Post.timespan.desc())
 
     @property
     def get_last_seen(self):
@@ -104,6 +104,13 @@ class Post(SearchableMixin, db.Model):
     body = db.Column(db.String(length=300))
     timespan = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def serialize(self):
+        return {
+            'user_id': self.user_id,
+            'body': self.body,
+            'timespan': self.timespan
+        }
 
     @property
     def post_date(self):
