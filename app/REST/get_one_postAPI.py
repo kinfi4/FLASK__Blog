@@ -6,6 +6,7 @@ from app.REST.constants import resource_post_fields, request_post_parser
 from app.Database.checkObjectExistence import object_exist
 from app.Database.getCertainObject import get_object_from_db
 from app.Database.updateObject import update_object
+from app.Database.deleteObject import delete_object
 
 from app.models import Post
 
@@ -25,6 +26,13 @@ class OnePostApi(Resource):
 
         args = request_post_parser.parse_args()
         return update_object(Post, id_, **args)
+
+    @marshal_with(resource_post_fields)
+    def delete(self, id_):
+        if not object_exist(Post, id_):
+            abort(404)
+
+        return delete_object(Post, id_)
 
 
 api.add_resource(OnePostApi, '/json_posts/<int:id_>')
