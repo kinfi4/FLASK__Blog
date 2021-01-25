@@ -10,7 +10,7 @@ from app import api
 from app.models import Post
 
 
-class PostApi(Resource):
+class AllPostsApi(Resource):
     def get(self):
         posts, has_prev, has_next, prev_num, next_num = get_all_posts(request.args)
         return jsonify({
@@ -35,7 +35,7 @@ class PostApi(Resource):
         return post
 
 
-api.add_resource(PostApi, '/json_posts')
+api.add_resource(AllPostsApi, '/json_posts')
 
 
 
