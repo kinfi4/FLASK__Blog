@@ -14,6 +14,23 @@ function move_messages(){
     }
 }
 
+function smooth_hidding(){
+    let pos = 60;
+    let opacity = 1;
+
+    let id = setInterval(frame, 2);
+    function frame(){
+        if(pos == 10){
+            clearInterval(id);
+            messageBlock.style.display = 'none'
+        }else{
+            pos--;
+            opacity -= 0.03;
+            messageBlock.style.top = pos + 'px';
+            messageBlock.style.opacity = opacity;            
+        }
+    }
+}
 
 if(messageBlock != null){
     move_messages();
@@ -22,7 +39,7 @@ if(messageBlock != null){
         let target = event.target;
 
         if(target.classList.contains('close-message')){
-            messageBlock.style.display = 'none';
+            smooth_hidding();
         }
     }
 
