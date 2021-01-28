@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-1 padding-0-block">
-                <img src="{{ post.author.get_avatar(36) }}" alt="" class="post-user-icon">
+                <img src="{{ post.author.get_avatar }}" alt="" class="post-user-icon">
             </div>
 
             <div class="col-md-10">
@@ -14,12 +14,14 @@
                     <div class="post-username">
                         <a href="{{ url_for('user_page', username=post.author.username) }}" class="post-user-full_name">{{ post.author.full_name }}</a>
                         <a href="{{ url_for('user_page', username=post.author.username) }}" class="post-user-username">@{{ post.author.username }}</a>
-                        <span class="post-date">                                
+                        <span class="post-date"> 
+                                   
                             {% if post.post_date.time_passed %}
                                     {{ moment(post.timespan).fromNow(true) }}
                                 {% else %}
                                     {{ moment(post.timespan).format(post.post_date.time_format) }}
-                            {% endif %}</span>    
+                            {% endif %}
+                        </span>
                     </div>
                 </div>
                 
