@@ -22,6 +22,6 @@ class Config:
     MAIL_USE_SSL = False
 
     MAIL_USERNAME = 'illuya607@gmail.com'
-    MAIL_PASSWORD = GMAIL_PASSWORD
+    MAIL_PASSWORD = os.environ.get('GMAIL_PASSWORD') or GMAIL_PASSWORD
 
     ADMINS = ['illuya607@gmail.com']
