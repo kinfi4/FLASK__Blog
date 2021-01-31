@@ -62,7 +62,7 @@ class Register(MethodView):
             db.session.add(user)
             db.session.commit()
 
-            flash('Congratulations, you successfully registered on MicroBlog!!', category='info')
+            flash('Congratulations, you successfully registered on KinfBook!!', category='info')
             return redirect(url_for('posts'))
         else:
             return render_template('forms/login_forms/register.html', title='Registration', form=form)
