@@ -4,3 +4,4 @@ __pycache__/
 *-console.log
 env/
 secret.py
+favicon.ico

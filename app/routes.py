@@ -20,3 +20,8 @@ def update_last_seen():
 def main():
     title = 'Main Page'
     return render_template('base.html', title=title, form=CreatePostForm())
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return ''

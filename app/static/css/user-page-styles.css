@@ -31,9 +31,16 @@
 
 .follow-link{
     text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
     font-size: medium;
     padding: 4px;
 }
+
+.follow-button{
+    width: 150px;
+}
+
 .username{
     color: rgb(100, 100, 100);
     font-size: 20px;
@@ -52,7 +59,7 @@
 }
 
 .follow-block{
-    width: 100%;
+    width: 50%;
     margin: auto;
     margin-top: 40px;
     width: auto;

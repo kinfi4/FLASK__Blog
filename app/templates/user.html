@@ -52,9 +52,9 @@
                                 {% if user == current_user %}
                                     <p><a href="{{ url_for('edit_profile') }}" class="btn btn-info edit-button">Edit your profile</a></p>
                                 {% elif not current_user.is_following(user) %}
-                                    <p><a href="{{ url_for('follow', username=user.username) }}" class="follow-link">Follow</a></p>
+                                <a href="{{ url_for('follow', username=user.username) }}" class="follow-link"><button class="btn btn-success follow-button">Follow</button></a>
                                 {% else %}
-                                    <p><a href="{{ url_for('unfollow', username=user.username) }}" class="follow-link">Unfollow</a></p>
+                                <a href="{{ url_for('unfollow', username=user.username) }}" class="follow-link"><button class="btn btn-danger follow-button">Unfollow</button></a>
                                 {% endif %}    
                             {% endif %}
                         </div>
